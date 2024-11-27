@@ -1,0 +1,28 @@
+# Compiled object files
+*.o
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.a
+*.lib
+
+# Executable files
+*.out
+*.exe
+
+# Debug files
+*.dSYM/
+*.dmp
+
+# Dependency directories
+node_modules/
+vendor/
+
+# IDE specific files
+.vscode/
+.vs/
+.idea/
