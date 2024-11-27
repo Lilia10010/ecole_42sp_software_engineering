@@ -81,9 +81,9 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 > &nbsp; &nbsp; &nbsp;
 
 <div style="padding-bottom: 10px;padding-top: 24px;">
-<h1 align="center" style="border: none;">
+<h2 align="center" style="border: none;">
   O Gráfico curricular mais f@@@ das galáxias! 🚀
-</h1>
+</h2>
 
 <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
 </div>
