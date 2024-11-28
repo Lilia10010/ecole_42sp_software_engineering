@@ -28,7 +28,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### [Born2beRoot](/Born2beRoot)
+### [Born2beRoot](/born2beroot)
 
 ⚠️ Work in Progress ⚠️
 
