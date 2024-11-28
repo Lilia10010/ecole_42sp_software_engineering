@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/42sp-logo.svg" alt="logo ecole 42 sp" style="display: block; margin-bottom: 10px;width: 200px;"/>
+  <img src="assets/42sp-logo.svg" alt="logo ecole 42 sp" style="display: block; margin-bottom: 10px;width: 200px;filter: drop-shadow(0 0 1rem #fff);"/>
   <div align="center" style="align: center; min-height: 275px;">
   <img src="https://badge.mediaplus.ma/binary/lpaula-n?1337Badge=off&UM6P=off" alt="lpaula-n's 42 stats" style="display: block;"/>
   </div>
@@ -69,7 +69,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### [Libft](/Libft)
+### [Libft](/libft)
 
 <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
@@ -82,7 +82,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
 <p align="center" style="border: none;color: #ff5ccd;">
-  O Gráfico curricular mais f@@@ das galáxias! 🚀
+  Gráfico curricular mais f# das galáxias! 🚀
 </p>
 
 <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
