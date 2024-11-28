@@ -1,8 +1,17 @@
-# ft_printf
+<div align="center" style="padding-bottom: 10px;">
+<img align="center" src="../assets/badges/ft_printfe.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+<h1 align="center" style="border: none;">
+  Ft Printf
+</h1>
 
-## Propósito
+</div>
 
-O propósito deste projeto é criar uma função `ft_printf` que imita o comportamento da função `printf` da biblioteca padrão do C. A função `ft_printf` deve ser capaz de imprimir diferentes tipos de dados formatados de acordo com especificadores de formato.
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
+> -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
+>
+> &nbsp; &nbsp; &nbsp;
 
 ## Especificadores de Formato
 
