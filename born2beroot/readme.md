@@ -6,8 +6,6 @@
 
 </div>
 
-⚠️ Work in Progress ⚠️
-
 > &nbsp; &nbsp; &nbsp;
 >
 > -   **Objetivo**: Este projeto introduz os conceitos de virtualização e administração de sistemas. O objetivo é configurar e administrar uma máquina virtual com um sistema operacional Linux, focando em práticas como a instalação e configuração de um ambiente de desenvolvimento.
