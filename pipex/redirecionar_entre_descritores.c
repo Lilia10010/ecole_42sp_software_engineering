@@ -58,7 +58,7 @@ int main() {
         perror("Erro ao ler o arquivo de origem");
     }
 
-    // Fecha os arquivos
+
     close(src_fd);
     close(dest_fd);
 

@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	printf("bane no sistema alguém me desconfigurou");
+	printf(">>> bane no sistema alguém me desconfigurou");
 	return (0);
 }
 

@@ -14,7 +14,7 @@ int main(void)
 	dup2(error_fd, STDERR_FILENO);
 	close(error_fd);
 
-	fprintf(stderr, "gravar este tabmém");
+	fprintf(stderr, "error no error");
 
 	return (0);
 }

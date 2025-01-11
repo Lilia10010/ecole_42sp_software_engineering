@@ -44,6 +44,7 @@ int main(int argc, char **argv, char **env)
 		int status;
 		wait(&status);
 		printf("Status do filhote: %d\n", WEXITSTATUS(status));
+		printf("%p", &argv[1]);
 	}
 
 	return (0);
@@ -51,3 +52,4 @@ int main(int argc, char **argv, char **env)
 
 
 //./test /bin/ls -l
+
