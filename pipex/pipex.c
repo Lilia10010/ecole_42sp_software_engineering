@@ -6,19 +6,19 @@
 
 int main(int argc, char **argv, char **env)
 {
-	if (argc != 5)
+	/* if (argc != 5)
 	{
 		fprintf(stderr, "Uso: %s <comando_a_ser_executado (ls)> <arg1> <arg2> ..\n", argv[0]);
 		exit(EXIT_FAILURE);
-	}
+	} */
 
-	//apenas para testing
-	int i = 0;
+	//imprime as variáveis de ambientes
+	/* int i = 0;
 	while(env[i] != NULL)
 	{
 		printf("env[%d]: %s\n", i, env[i]);
 		++i;
-	}
+	} */
 
 	pid_t pid;
 
