@@ -19,7 +19,7 @@ void	parent_process(char **argv, char **envp, int *fd)
 {
 	int		fileout;
 
-	fileout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	fileout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fileout == -1)
 		error();
 	dup2(fd[0], STDIN_FILENO);
