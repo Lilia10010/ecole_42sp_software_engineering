@@ -1,0 +1,51 @@
+./pipex infile "ls -l" "wc -l" outfile
+➜ pipex_test git:(feature/pipex) ✗ < infile ls -l | wc -l > outfile
+bão => https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
+
+testes:
+
+Descrição: Lê o conteúdo de infile, passa pelo comando cat, conta as linhas com wc -l, e salva em outfile.
+pipex => ./pipex infile "cat" "wc -l" outfile
+shell => < infile cat | wc -l > outfile
+
+Descrição: Lê infile, filtra linhas contendo "test" (grep), ordena as linhas (sort), e salva em outfile.
+./pipex infile "grep test" "sort" outfile
+
+
+test de erro:
+comando inválido: ./pipex infile "invalidcommand" "wc -l" outfile
+arquivo inexistente: ./pipex nonexistentfile "cat" "wc -l" outfile
+
+
+Permissão negada no arquivo de entrada:
+chmod 000 infile
+./pipex infile "cat" "wc -l" outfile
+
+Permissão negada no arquivo de saída:
+touch outfile && chmod 000 outfile
+./pipex infile "ls -l" "wc -l" outfile
+
+
+Descrição: Gera um arquivo com 1 milhão de linhas e processa com o programa (deve contar o número de linhas)
+yes "test line" | head -n 1000000 > infile
+
+--------------------------------------------- \\ ---- // --
+
+não esta funcionando:
+Comando com redirecionamento interno
+Descrição: Lê o infile, exibe apenas a primeira coluna de cada linha com awk.
+pipex => ./pipex infile "cat" "awk '{print $1}'" outfile
+shell => < infile cat | awk '{print $1}' > outfile
+
+Descrição: Especifica o caminho absoluto de um binário no comando (deveria listar o conteúdo do diretório)
+./pipex infile "/bin/ls -l" "wc -l" outfile
+
+Descrição: Lista arquivos do infile, filtra arquivos .c, conta o número de linhas, e salva no outfile.
+ ./pipex infile "ls -l" "grep .c"  "wc -l" outfile 
+ < infile ls -l | grep .c | wc -l > outfile
+
+
+------------------------------------------------ >> ------------- << ------------
+
+teste com mais de tres comandos (se comseguir ganha um campari :] )
+./pipex infile "ls -l" "grep .c" "wc -l" outfile

@@ -3,45 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/13 23:33:39 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:47:14 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../include/pipex.h"
 
-char    *get_command_path(char *command, char **envp)
+void error_exit(const char *msg)
 {
-    char    *path_env;
-    char    **paths;
-    char    *full_path;
-    size_t  i;
+    perror(msg);
+    exit(EXIT_FAILURE);
+}
+
+char *get_command_path(char *command, char **envp)
+{
+    char *path_env;
+    char **paths;
+    char *full_path;
+    size_t i;
 
     while (*envp)
     {
-        if (strncmp(*envp, "PATH=", 5) == 0)
+        if (ft_strncmp(*envp, "PATH=", 5) == 0)
         {
             path_env = *envp + 5;
             break;
         }
-        envp++;
+        ++envp;
     }
-
     if (!path_env)
         return (NULL);
 
-    paths = ft_split(path_env, ':'); 
-
+    paths = ft_split(path_env, ':');
     i = 0;
     while (paths[i])
     {
         full_path = malloc(strlen(paths[i]) + strlen(command) + 2);
         if (!full_path)
-            return (NULL); 
+            return (NULL);
         sprintf(full_path, "%s/%s", paths[i], command);
-
         if (access(full_path, X_OK) == 0)
         {
             while (paths[i])
@@ -52,68 +56,80 @@ char    *get_command_path(char *command, char **envp)
         free(full_path);
         i++;
     }
-
-      i = 0;
+    i = 0;
     while (paths[i])
         free(paths[i++]);
     free(paths);
     return (NULL);
 }
-void    error_exit(const char *msg)
-{
-    perror(msg);
-    exit(EXIT_FAILURE);
-}
 
-/* void    execute_command(char *cmd, char **envp)
+void execute_command(char *cmd, char **envp)
 {
-    char    **args = ft_split(cmd, ' ');
-    char    *path = get_command_path(args[0], envp); 
+    char **args = ft_split(cmd, ' ');
+    char *path = get_command_path(args[0], envp);
     if (!path)
         error_exit("Command not found");
     execve(path, args, envp);
     perror("execve");
     exit(EXIT_FAILURE);
-} */
+}
 
-void    execute_process(char **argv, char **envp, int *fd)
+void setup_pipex(int argc, char **argv, char **envp)
 {
-	int     file;
-	char    **args;
-	char    *path;
+    int i, pipes[2], prev_pipe, file_in, file_out;
+    pid_t pid;
 
-	file = open(argv[1], O_RDONLY, 0777);
-	if (file < 0)
-		error_exit("error: open fd");
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(file, STDIN_FILENO);
-	close(fd[0]);
-	args = ft_split(argv[2], ' ');
-	path = get_command_path(args[0], envp);
-	if (!path)
-		error_exit("Command not found");
-	execve(path, args, envp);
-	perror("execve");
-	exit(EXIT_FAILURE);
+    file_in = open(argv[1], O_RDONLY);
+    if (file_in < 0)
+        error_exit("Error: open input file");
+    file_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+    if (file_out < 0)
+        error_exit("Error: open output file");
+
+    prev_pipe = file_in; 
+
+    //para cada comando intermediário
+    for (i = 0; i < argc - 3; i++)
+    {
+        if (pipe(pipes) < 0)
+            error_exit("Error: pipe");
+
+        pid = fork();
+        if (pid < 0)
+            error_exit("Error: fork");
+
+        if (pid == 0) // Child process
+        {
+            dup2(prev_pipe, STDIN_FILENO);
+            if (i < argc - 3)
+                dup2(pipes[1], STDOUT_FILENO); // se não for o último comando, redireciona a saída para o pipe
+            else
+                dup2(file_out, STDOUT_FILENO); //se for o ultimo comando, redireciona a saída para o arquivo
+
+            close(pipes[0]);
+            close(pipes[1]);
+            if (prev_pipe != file_in)
+                close(prev_pipe);
+
+            execute_command(argv[i + 2], envp);
+        }
+
+        close(prev_pipe);
+        close(pipes[1]);
+        prev_pipe = pipes[0]; // resetar p/ (leitura)
+    }
+
+    // Wait for all child processes
+    while (wait(NULL) > 0);
 }
 
 int main(int argc, char **argv, char **envp)
 {
-	int fd[2];
-	pid_t pid1;
-
-	if (argc == 5)
-	{
-		if (pipe(fd) < 0)
-			error_exit("error: pipe");
-		pid1 = fork();
-		if (pid1 < 0)
-			error_exit("error: forking");
-		if (pid1 == 0)
-			execute_process(argv, envp, fd)
-		waitpid(pid1, NULL, 0);
-		execute_process(argv, envp, fd);	
-	}
-	
-	return (0);
+    if (argc < 5)
+    {
+        write(2, "Usage: ./pipex infile cmd1 cmd2 ... cmdN outfile\n", 49);
+        return (1);
+    }
+    setup_pipex(argc, argv, envp);
+    return (0);
 }
