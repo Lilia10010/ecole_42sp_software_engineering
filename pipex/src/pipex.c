@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/16 13:47:14 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/17 18:12:16 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,46 @@ void execute_command(char *cmd, char **envp)
     exit(EXIT_FAILURE);
 }
 
+void process_commands(int argc, char **argv, char **envp, int file_in, int file_out)
+{
+	int i;
+	int pipes[2];
+	pid_t pid;
+	int prev_pipe;
+	
+	prev_pipe = file_in;
+	i = 0;
+	while (i < argc - 3)
+	{
+		if(pipe(pipes) < 0)
+			error_exit("Error: pipe");
+		pid = fork();
+		if (pid < 0)
+			error_exit("Error: fork");
+		if (pid == 0)
+		{
+			dup2(prev_pipe, STDIN_FILENO);
+			if (i < argc - 4)
+				dup2(pipes[1], STDOUT_FILENO);
+			else
+				dup2(file_out, STDOUT_FILENO);
+
+			close(pipes[0]);
+			close(pipes[1]);
+			if (prev_pipe != file_in)
+				close(prev_pipe);
+			execute_command(argv[i + 2], envp);
+		}
+		close(prev_pipe);
+		close(pipes[1]);
+		prev_pipe = pipes[0]; // resetar p/ leitura
+		++i;
+	}
+}
+
 void setup_pipex(int argc, char **argv, char **envp)
 {
-    int i, pipes[2], prev_pipe, file_in, file_out;
-    pid_t pid;
+    int file_in, file_out;
 
     file_in = open(argv[1], O_RDONLY);
     if (file_in < 0)
@@ -86,22 +122,21 @@ void setup_pipex(int argc, char **argv, char **envp)
     if (file_out < 0)
         error_exit("Error: open output file");
 
-    prev_pipe = file_in; 
-
     //para cada comando intermediário
-    for (i = 0; i < argc - 3; i++)
+
+
+	process_commands(argc, argv, envp, file_in, file_out);
+    /* while(i < argc - 3)
     {
         if (pipe(pipes) < 0)
             error_exit("Error: pipe");
-
         pid = fork();
         if (pid < 0)
             error_exit("Error: fork");
-
         if (pid == 0) // Child process
         {
             dup2(prev_pipe, STDIN_FILENO);
-            if (i < argc - 3)
+            if (i < argc - 4)
                 dup2(pipes[1], STDOUT_FILENO); // se não for o último comando, redireciona a saída para o pipe
             else
                 dup2(file_out, STDOUT_FILENO); //se for o ultimo comando, redireciona a saída para o arquivo
@@ -117,7 +152,8 @@ void setup_pipex(int argc, char **argv, char **envp)
         close(prev_pipe);
         close(pipes[1]);
         prev_pipe = pipes[0]; // resetar p/ (leitura)
-    }
+		++i;
+    } */
 
     // Wait for all child processes
     while (wait(NULL) > 0);
