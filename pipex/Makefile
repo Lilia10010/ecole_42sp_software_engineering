@@ -1,44 +1,35 @@
 NAME = pipex
 
-# directories
-SRC_DIR = src
-OBJ_DIR = obj
-UTILS_DIR = $(SRC_DIR)/utils
-INCLUDE_DIR = include
-LIBFT_DIR = libft
-
 # files
-SRCS = $(SRC_DIR)/pipex.c\
-		$(UTILS_DIR)/error.c $(UTILS_DIR)/print_hello.c 
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-LIBFT = $(LIBFT_DIR)/libft.a
+SRCS = pipex.c pipex.h utils.c
+OBJS = $(SRCS:.c=.o)
+LIBFT = libft/libft.a
 
 # compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 # compilation rules
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # compilation lib
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	make -C libft
 
 clean:
 	$(RM) $(OBJS)
-	make -C $(LIBFT_DIR) clean
+	make -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	make -C libft fclean
 
 #libft:
 #	make -C libft

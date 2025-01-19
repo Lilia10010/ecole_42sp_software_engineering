@@ -1,8 +1,7 @@
-#ifndef PIPE_H
-#define PIPE_H
+# ifndef PIPE_H
+# define PIPE_H
 
-#include <stdio.h>
-#include <stdlib.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -22,4 +21,4 @@ void process_child(int *pipes, int prev_pipe, int file_in, int file_out, int is_
 void process_commands(int argc, char **argv, char **envp, int file_in, int file_out);
 void pipex(int argc, char **argv, char **envp);
 
-#endif
+# endif
