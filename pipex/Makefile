@@ -1,7 +1,8 @@
 NAME = pipex
+# NAME_BONUS = pipex_bonus
 
 # files
-SRCS = pipex.c pipex.h utils.c
+SRCS = pipex.c utils.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
@@ -12,7 +13,7 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 # compilation rules
@@ -21,7 +22,7 @@ $(NAME): $(OBJS)
 
 # compilation lib
 $(LIBFT):
-	make -C libft
+	make -C libft all
 
 clean:
 	$(RM) $(OBJS)
@@ -30,9 +31,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	make -C libft fclean
-
-#libft:
-#	make -C libft
 
 re: fclean all
 
