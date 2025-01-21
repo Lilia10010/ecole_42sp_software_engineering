@@ -6,7 +6,7 @@
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/19 23:49:39 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:58:53 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	pipex(int argc, char **argv, char **envp)
 	pipex.envp = envp;
 	pipex.file_in = open(argv[1], O_RDONLY);
 	if (pipex.file_in < 0)
-		error_exit("Error: open input file");
+	{
+		error_exit("Error: open output file");
+	}
 	pipex.file_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (pipex.file_out < 0)
 		error_exit("Error: open output file");

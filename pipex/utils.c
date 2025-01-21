@@ -6,7 +6,7 @@
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/19 23:23:06 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:30:09 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ void	error_exit(const char *msg)
 	perror(msg);
 	exit(EXIT_FAILURE);
 }
+
+/* void	error_exit_file(const char *msg, char *file_name)
+{
+	int	file;
+
+	file = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	close(file);
+	error_exit(msg);
+} */
 
 void	free_paths(char **paths)
 {
@@ -61,6 +70,8 @@ char	*get_command_path(char *cmd, char **envp)
 	char	*path;
 	int		i;
 
+	if (cmd[0] == '/' || cmd[0] == '.')
+		return (ft_strdup(cmd));
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
@@ -86,6 +97,6 @@ void	execute_command(char *cmd, char **envp)
 		error_exit("Command not found =>");
 	}
 	execve(path, args, envp);
-	perror("execve");
+	perror("execve =>");
 	exit(EXIT_FAILURE);
 }

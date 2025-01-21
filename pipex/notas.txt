@@ -49,3 +49,16 @@ Descrição: Lista arquivos do infile, filtra arquivos .c, conta o número de li
 
 teste com mais de tres comandos (se comseguir ganha um campari :] )
 ./pipex infile "ls -l" "grep .c" "wc -l" outfile
+
+
+----------------------
+[x] funcionar com o caminho absoluto => ./pipex infile /bin/cat "grep pipe" outfile
+[ ] criar o outfile independente dos comandos funcionar
+
+char *path = "/usr/bin/ls"; 
+O caminho absoluto para o comando `grep` geralmente é `/bin/grep` e para o comando `wc -l` é `/usr/bin/wc`. Você pode verificar isso usando os comandos `which grep` e `which wc` no terminal:
+
+chmod -r infile
+Os resultados típicos são:
+- `/bin/grep`
+- `/usr/bin/wc`
