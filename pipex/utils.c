@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/20 23:30:09 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:45:00 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,12 @@ void	execute_command(char *cmd, char **envp)
 	path = get_command_path(args[0], envp);
 	if (!path)
 	{
+		free_paths(args);
 		error_exit("Command not found =>");
 	}
 	execve(path, args, envp);
 	perror("execve =>");
+	free(path);
+	free_paths(args);
 	exit(EXIT_FAILURE);
 }

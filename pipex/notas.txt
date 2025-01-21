@@ -62,3 +62,7 @@ chmod -r infile
 Os resultados típicos são:
 - `/bin/grep`
 - `/usr/bin/wc`
+
+-------------
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck --trace-children=yes ./pipex infile "cat" "wc -l" outfile
