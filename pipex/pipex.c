@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/21 17:39:42 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/21 20:25:01 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	pipex(int argc, char **argv, char **envp)
 	pipex.file_in = open(argv[1], O_RDONLY);
 	if (pipex.file_in < 0)
 	{
+		pipex.file_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		error_exit("Error: open infile");
 	}
 	pipex.file_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
@@ -75,7 +76,7 @@ void	pipex(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	if (argc < 5)
+	if (argc != 5)
 	{
 		write(2, "Usage: ./pipex infile cmd1 cmd2 ... cmdN outfile\n", 49);
 		return (1);
