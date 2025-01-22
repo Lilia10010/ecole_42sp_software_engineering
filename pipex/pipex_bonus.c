@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/22 16:34:30 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/22 16:34:22 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	pipex(int argc, char **argv, char **envp)
 	pipex.envp = envp;
 	pipex.file_out = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (pipex.file_out < 0)
-		error_exit("Error: open output file");
+		error_exit("Error open outfile");
 	pipex.file_in = open(argv[1], O_RDONLY);
 	if (pipex.file_in < 0)
 	{
-		error_exit("Error: open infile");
+		error_exit("Error open infile");
 	}
 	process_commands(&pipex);
 	while (wait(NULL) > 0)
@@ -75,7 +75,7 @@ void	pipex(int argc, char **argv, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	if (argc != 5)
+	if (argc < 5)
 	{
 		ft_putstr_fd("\033[31mError: Invalid arguments\n\e[0m", 2);
 		ft_putstr_fd("Ex: ./pipex infile \"cat\" \"grep test\" outfile\n", 1);

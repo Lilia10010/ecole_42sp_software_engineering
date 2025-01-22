@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/21 17:45:00 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/22 16:40:36 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@ void	error_exit(const char *msg)
 	perror(msg);
 	exit(EXIT_FAILURE);
 }
-
-/* void	error_exit_file(const char *msg, char *file_name)
-{
-	int	file;
-
-	file = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	close(file);
-	error_exit(msg);
-} */
 
 void	free_paths(char **paths)
 {
@@ -95,10 +86,10 @@ void	execute_command(char *cmd, char **envp)
 	if (!path)
 	{
 		free_paths(args);
-		error_exit("Command not found =>");
+		error_exit("Command not found");
 	}
 	execve(path, args, envp);
-	perror("execve =>");
+	perror("execve");
 	free(path);
 	free_paths(args);
 	exit(EXIT_FAILURE);

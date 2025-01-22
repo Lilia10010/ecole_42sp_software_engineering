@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 23:35:19 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/20 23:14:08 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:03:44 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	execute_command(char *cmd, char **envp);
 void	process_child(int *pipes, int prev_pipe, t_pipex *pipex, int is_last);
 void	process_commands(t_pipex *pipex);
 void	pipex(int argc, char **argv, char **envp);
-void	error_exit_file(const char *msg, char *file_name);
 
 #endif
