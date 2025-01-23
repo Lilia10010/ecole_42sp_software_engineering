@@ -4,6 +4,9 @@ bão => https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 
 testes:
 
+Descrição: gera uma lista de 10000 números aleatórios entre 1-999:
+ shuf -i 1-999 -n 10000 > infile
+
 Descrição: Lê o conteúdo de infile, passa pelo comando cat, conta as linhas com wc -l, e salva em outfile.
 pipex => ./pipex infile "cat" "wc -l" outfile
 shell => < infile cat | wc -l > outfile
