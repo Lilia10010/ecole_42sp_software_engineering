@@ -70,3 +70,10 @@ Os resultados típicos são:
 -------------
 
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck --trace-children=yes ./pipex infile "cat" "wc -l" outfile
+
+
+./pipex "infiles/basic.txt" "cat -e" "grep nonexistingword" "outfiles/nonexistingfile" 
+< infiles cat -e | grep nonexistingword > outfile
+
+echo $?
+baixar o o 42_pipex_tester colocar na raiz rodar o bash run.sh
