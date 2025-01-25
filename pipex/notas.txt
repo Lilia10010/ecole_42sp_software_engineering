@@ -3,6 +3,8 @@
 bão => https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
 
 testes:
+Descrição: filtra 1 e retorna qntidade de linhas
+./pipex infile cat "grep 1" "sort" "wc -l"  outfile
 
 Descrição: gera uma lista de 10000 números aleatórios entre 1-999:
  shuf -i 1-999 -n 10000 > infile
@@ -14,11 +16,9 @@ shell => < infile cat | wc -l > outfile
 Descrição: Lê infile, filtra linhas contendo "test" (grep), ordena as linhas (sort), e salva em outfile.
 ./pipex infile "grep test" "sort" outfile
 
-
 test de erro:
 comando inválido: ./pipex infile "invalidcommand" "wc -l" outfile
 arquivo inexistente: ./pipex nonexistentfile "cat" "wc -l" outfile
-
 
 Permissão negada no arquivo de entrada:
 chmod 000 infile
@@ -77,3 +77,13 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=m
 
 echo $?
 baixar o o 42_pipex_tester colocar na raiz rodar o bash run.sh
+
+./pipex "nonexistingfile" "cat -e" "ls" "outfiles/outfile" 
+< nonexistingfile cat -e | ls > outfiles/outfile_tester
+
+
+----
+duvidas significado de 0777, 0666, 0644
+acessando um index 0, 1, 2
+acessando normal 1, 2, 3
+como se fala quando precisamos acessar por index ou normal?

@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:25 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/22 16:40:36 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/24 22:19:18 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	error_exit(const char *msg)
 {
-	perror(msg);
+	write(2, "\033[31m", 5);
+    perror(msg);
+    write(2, "\033[0m", 4);
 	exit(EXIT_FAILURE);
 }
 
@@ -81,16 +83,16 @@ void	execute_command(char *cmd, char **envp)
 
 	args = ft_split(cmd, ' ');
 	if (!args)
-		error_exit("Error: split");
+		error_exit("Error split");
 	path = get_command_path(args[0], envp);
 	if (!path)
 	{
 		free_paths(args);
-		error_exit("Command not found");
+		error_exit("Error command not found");
 	}
-	execve(path, args, envp);
-	perror("execve");
+	if (execve(path, args, envp) == -1)
+		error_exit("Error execve");
 	free(path);
 	free_paths(args);
-	exit(EXIT_FAILURE);
+	error_exit("Error execve");
 }
