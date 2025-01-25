@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 23:35:19 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/01/24 22:21:10 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/01/25 15:31:12 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_paths(char **paths);
 char	*find_executable_path(char **paths, char *cmd);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char *cmd, char **envp);
-void	process_child(int *pipes, int prev_pipe, t_pipex *pipe, int index)
+void	process_child(int *pipes, int prev_pipe, t_pipex *pipe, int index);
 void	process_commands(t_pipex *pipex);
 void	pipex(int argc, char **argv, char **envp);
 
