@@ -15,7 +15,7 @@ typedef struct s_node
 	int		move_cost; //armazena o valor do "custo da movimentação"
 	bool	above_median;
 	bool	cheapest;	//mais barato
-	struct	s_node *targe_node; // alvo
+	struct	s_node *target_node; // alvo
 	struct	s_node *next;
 	struct	s_node *prev;
 } t_node;
@@ -40,8 +40,7 @@ void	ra(t_node **a, bool print);
 void	rb(t_node **b, bool print);
 void	rr(t_node **a, t_node **b, bool print);
 
-void	sort_stacks(t_node **a, t_node **b);
-
+void	sort_stack_with_aux(t_node **a, t_node **b);
 
 char	**split(char *str,  char delimiter);
 

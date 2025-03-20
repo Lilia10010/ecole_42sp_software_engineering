@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:11:00 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 00:11:01 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/19 20:20:40 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,35 @@
 
 static void	swap(t_node **head)
 {
-    if (*head && (*head)->next)
-    {
-        printf("Trocando os dois primeiros elementos da pilha.\n");
-    }
-    else
-    {
-        printf("Não há elementos suficientes para trocar na pilha.\n");
-    }
-
+	if (!head || !(*head)->next)
+		return ;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
 void	sa(t_node	**a, bool print)
 {
-	if (print)
-    {
-        printf("Operação SA (troca nos dois primeiros elementos de A)\n");
-    }
-    swap(a);
+	swap(a);
+	if (!print)
+		write(1, "sa\n", 3);
 }
 
 void	sb(t_node **b, bool print)
 {
-	 if (print)
-    {
-        printf("Operação SB (troca nos dois primeiros elementos de B)\n");
-    }
-    swap(b);
-
+	swap(b);
+	if (!print)
+		write(1, "sb", 3);
 }
 
 void	ss(t_node **a, t_node **b, bool print)
 {
-	if (print)
-    {
-        printf("Operação SS (troca nos dois primeiros elementos de A e B)\n");
-    }
-    swap(a);
-    swap(b);
-
+	swap(a);
+	swap(b);
+	if (!print)
+		write(1, "ss\n", 3);
 }

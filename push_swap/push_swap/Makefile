@@ -1,7 +1,7 @@
 NAME = push_swap
 
 LIBFT = libft/libft.a
-SRCS = push_swap.c handle_error.c handle_free.c init_a_to_b.c init_b_to_a.c operations.c sort_stacks.c \
+SRCS = push_swap.c handle_error.c handle_free.c init_a_to_b.c init_b_to_a.c operations.c sort_stack_with_aux.c \
 	sort_three.c sort_ultis.c split.c stack_init.c stack_utils.c swap.c
 OBJS = $(SRCS:.c=.o)
 

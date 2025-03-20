@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:18 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 21:32:58 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/19 20:38:36 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void	push(t_node **dst, t_node **src)
 	}
 	else
 	{
-		push_node->next = *dst;// O nó que estamos empurrando (push_node) agora aponta para o topo de dst
-		push_node->next->prev = push_node;// O antigo topo de dst agora tem push_node como anterior (prev)
-		*dst = push_node; // Atualizamos dst para que seu topo seja o push_node
+		move_node->next = *dst;// O nó que estamos empurrando (move_node) agora aponta para o topo de dst
+		move_node->next->prev = move_node;// O antigo topo de dst agora tem push_node como anterior (prev)
+		*dst = move_node; // Atualizamos dst para que seu topo seja o push_node
 	}
 }
 

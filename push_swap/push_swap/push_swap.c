@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:24 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 00:10:25 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/19 21:39:00 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int	main(int argc, char **argv)
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else
-			sort_stacks(&a, &b);
+			sort_stack_with_aux(&a, &b);
 	}
 	free_stack(&a);
 	if (argc == 2)
 		free_args(args);
 	return (0);
 }
+
