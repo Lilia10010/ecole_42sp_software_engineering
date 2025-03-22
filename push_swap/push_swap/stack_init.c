@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:52 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/19 20:52:06 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/22 14:28:56 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ static long	ft_atol(const char *s)
 			sign = -1;
 		++s;
 	}
-	while (ft_isdigit(*s))
+	while ('0' <= *s && *s <= '9')
 	{
 		result = result * 10 + (*s - '0');
 		++s;
 	}
 	return (result + sign);
 }
+
 
 static void	append_node(t_node **stack, int n)
 {
@@ -76,6 +77,27 @@ void	init_stack_a(t_node **a, char **args)
 	}
 }
 
+/* void	init_stack_a(t_node **a, char **argv)
+{
+	long	n;
+	int		i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (error_syntax(argv[i]))
+			free_errors(a);
+		n = ft_atol(argv[i]);
+		if (n > INT_MAX || n < INT_MIN)
+			free_errors(a);
+		if (error_duplicate(*a, (int)n))
+			free_errors(a);
+		append_node(a, (int)n);
+		i++;
+	}
+}
+ */
+
 t_node	*get_cheapest(t_node *stack)
 {
 	if (!stack)
@@ -96,16 +118,16 @@ void	prep_for_push(t_node **stack, t_node *top_node, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (top_node->above_median)
-				ra(stack, false);
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->above_median)
-				rb(stack, false);
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}
 	}
 }

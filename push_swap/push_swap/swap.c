@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:11:00 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/19 20:20:40 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/22 14:35:43 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,21 @@ static void	swap(t_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_node	**a, bool print)
+void	sa(t_node	**a)
 {
 	swap(a);
-	if (!print)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b, bool print)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (!print)
-		write(1, "sb", 3);
+	write(1, "sb", 3);
 }
 
-void	ss(t_node **a, t_node **b, bool print)
+void	ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
-	if (!print)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

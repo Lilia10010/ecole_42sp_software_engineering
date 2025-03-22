@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_b_to_a.c                                      :+:      :+:    :+:   */
+/*   init_b_to_a_bk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:10 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 15:32:26 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/20 12:33:15 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static void	set_target_b(t_node *a, t_node *b)
 			}
 			current_a = current_a->next;
 		}
+		if (match == LONG_MAX)
+			b->target_node = find_min(a);
+		else
+			b->target_node = target_node;
+		b = b->next;
 	}
-	if (match == LONG_MAX)
-		b->target_node = find_min(a);
-	else
-		b->target_node = target_node;
-	b = b->next;
 }
 
 void	init_nodes_b(t_node *a, t_node *b)

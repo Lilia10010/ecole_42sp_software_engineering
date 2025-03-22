@@ -4,8 +4,6 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <stdlib.h>
-# include <stdio.h> //tests com printf
-# include "libft/libft.h"
 #include <unistd.h>
 
 typedef struct s_node 
@@ -15,7 +13,7 @@ typedef struct s_node
 	int		move_cost; //armazena o valor do "custo da movimentação"
 	bool	above_median;
 	bool	cheapest;	//mais barato
-	struct	s_node *target_node; // alvo
+	struct	s_node *target_node; // no alvo
 	struct	s_node *next;
 	struct	s_node *prev;
 } t_node;
@@ -27,30 +25,26 @@ int		error_syntax(char *str);
 int		error_duplicate(t_node *a, int n);
 
 //operaions
-void	sa(t_node	**a, bool print);
-void	sb(t_node **b, bool print);
-void	ss(t_node **a, t_node **b, bool print);
-
-void	pa(t_node **a, t_node **b, bool print);
-void	pb(t_node **b, t_node **a, bool print);
-void	rra(t_node **a, bool print);
-void	rrb(t_node **b, bool print);
-void	rrr(t_node **a, t_node **b, bool print);
-void	ra(t_node **a, bool print);
-void	rb(t_node **b, bool print);
-void	rr(t_node **a, t_node **b, bool print);
+void	push(t_node **dst, t_node **src, const char *operation);
+void	sa(t_node	**a);
+void	sb(t_node **b);
+void	ss(t_node **a, t_node **b);
+void	rra(t_node **a);
+void	rrb(t_node **b);
+void	rrr(t_node **a, t_node **b);
+void	ra(t_node **a);
+void	rb(t_node **b);
+void	rr(t_node **a, t_node **b);
 
 void	sort_stack_with_aux(t_node **a, t_node **b);
 
-char	**split(char *str,  char delimiter);
+char	**ft_split(char *str,  char delimiter);
 
 void	init_stack_a(t_node **a, char **args);
 t_node	*get_cheapest(t_node *stack);
-void	prep_for_push(t_node **stack,
-						t_node *top_node,
-						char stack_name);
+void	prep_for_push(t_node **stack, t_node *top_node, char stack_name);
 
-bool	stack_sorted(t_node *stack);
+bool	is_sorted_ascending(t_node *stack);
 int		stack_len(t_node *stack);
 t_node	*find_last(t_node *stack);
 t_node	*find_min(t_node *stack);

@@ -6,14 +6,13 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:56 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/19 18:18:22 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/22 14:34:12 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//is_sorted_ascending
-bool	stack_sorted(t_node *stack)
+bool	is_sorted_ascending(t_node *stack)
 {
 	if (!stack)
 		return (1);
