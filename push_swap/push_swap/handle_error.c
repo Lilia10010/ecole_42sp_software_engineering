@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:09:21 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 00:09:26 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/26 19:55:03 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	error_syntax(char *str)
 	}
 	while (*str)
 	{
-		if(!(*str >= '0' && *str <= '9'))
+		if (!(*str >= '0' && *str <= '9'))
 			return (1);
 		++str;
 	}

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   init_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 23:02:22 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/18 15:07:16 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/26 19:52:32 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -37,7 +36,7 @@ void	current_index(t_node *stack)
 static void	set_target_a(t_node *a, t_node *b)
 {
 	t_node	*current_b;
-	t_node	*target_node; //aponta para o nó q correnponde o valor encontrado em b
+	t_node	*target_node;
 	long	match;
 
 	while (a)
@@ -71,7 +70,7 @@ static void	cost_analysis_a(t_node *a, t_node *b)
 	while (a)
 	{
 		a->move_cost = a->index;
-		if(!(a->above_median))
+		if (!(a->above_median))
 			a->move_cost = len_a - (a->index);
 		if (a->target_node->above_median)
 			a->move_cost += a->target_node->index;

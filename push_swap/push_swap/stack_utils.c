@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:56 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/22 14:34:12 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/26 19:54:11 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ bool	is_sorted_ascending(t_node *stack)
 	return (1);
 }
 
-int stack_len(t_node *stack)
+int	stack_len(t_node *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!stack)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 00:10:52 by microbiana        #+#    #+#             */
-/*   Updated: 2025/03/22 14:28:56 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/03/26 20:35:32 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ static long	ft_atol(const char *s)
 		result = result * 10 + (*s - '0');
 		++s;
 	}
-	return (result + sign);
+	return (result * sign);
 }
-
 
 static void	append_node(t_node **stack, int n)
 {
@@ -49,7 +48,6 @@ static void	append_node(t_node **stack, int n)
 	node->next = NULL;
 	node->data = n;
 	node->cheapest = 0;
-
 	if (!(*stack))
 	{
 		*stack = node;
@@ -70,33 +68,14 @@ void	init_stack_a(t_node **a, char **args)
 	while (*args)
 	{
 		converted_number = ft_atol(*args);
-		if (error_syntax(*args) || converted_number > INT_MAX || converted_number < INT_MIN || error_duplicate(*a, (int)converted_number))
+		if (error_syntax(*args) || converted_number > INT_MAX \
+			|| converted_number < INT_MIN \
+			|| error_duplicate(*a, (int)converted_number))
 			free_errors(a);
 		append_node(a, (int)converted_number);
 		++args;
 	}
 }
-
-/* void	init_stack_a(t_node **a, char **argv)
-{
-	long	n;
-	int		i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (error_syntax(argv[i]))
-			free_errors(a);
-		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
-		if (error_duplicate(*a, (int)n))
-			free_errors(a);
-		append_node(a, (int)n);
-		i++;
-	}
-}
- */
 
 t_node	*get_cheapest(t_node *stack)
 {
