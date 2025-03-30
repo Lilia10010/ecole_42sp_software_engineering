@@ -28,6 +28,21 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
+### [Push_swap](/push_swap)
+
+⚠️ Work in Progress ⚠️
+
+<img src="assets/badges/push_swape.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+
+> -   **Objetivo**: O objetivo deste projeto é criar um programa que ordena uma pilha de números inteiros, utilizando duas pilhas auxiliares e um conjunto limitado de operações. O desafio é encontrar a sequência de operações mais eficiente para ordenar a pilha, minimizando o número de movimentos necessários.
+> -   **Habilidades**: `Algoritmos` `estruturas de dados` `pilhas` `ordenamento`
+>
+> &nbsp; &nbsp; &nbsp;
+
+---
+
 ### [Pipex](/pipex)
 
 ⚠️ Work in Progress ⚠️
