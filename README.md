@@ -45,8 +45,6 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ### [Pipex](/pipex)
 
-⚠️ Work in Progress ⚠️
-
 <img src="assets/badges/pipexe.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
