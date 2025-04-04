@@ -40,7 +40,7 @@ $(OBJ_DIR)/ft_printf/%.o: $(PRINTF_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ_DIR)
+	$(RM) -rf $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
