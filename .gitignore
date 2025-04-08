@@ -9,6 +9,7 @@
 # Compiled static libraries
 *.a
 *.lib
+*cys
 
 # Executable files
 *.out
