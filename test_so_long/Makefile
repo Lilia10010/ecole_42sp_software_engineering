@@ -1,19 +1,20 @@
 NAME := so_long
 
-CC			:= cc
-CFLAGS		:= -Wall -Werror -Wextra -I./includes
+CC			:= gcc
+#CFLAGS		:= -Wall -Werror -Wextra -I./includes
+CFLAGS		:= -Wall -Werror -Wextra -I./includes -I./lib/lib_ft
 RM			:= rm -f
 MLX_FLAGS	:= -ldl -lglfw -pthread -lm
 
-SRCS 		:= ./src/main.c
-LIBFT_DIR	:= ./lib/libft
+SRCS 		:= ./src/main.c ./src/handle_free.c ./src/parse_map.c ./src/render.c ./src/load_textures.c #./src/movement.c ./src/utils.c
+LIBFT_DIR	:= ./lib/lib_ft
 MLX_DIR		:= lib/MLX42
 OBJ_DIR		:= obj
 OBJ			:= $(patsubst ./src/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 HEADER 		:= -I ./includes -I $(LIBFT_DIR)
-LIBFT 		:= $(LIBFT_DIR)/liball.a
-MLX			:= $(MLX_DIR)build/libmlx42.a
+LIBFT 		:= $(LIBFT_DIR)/libft.a
+MLX			:= $(MLX_DIR)/build/libmlx42.a
 
 NC		:= \033[0m
 YELLOW	:= \033[1;33m
@@ -32,7 +33,7 @@ MSG_SUCCESS	:= $(GREEN)======= Compilação completa! =======$(NC)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
+$(NAME): $(LIBFT) $(OBJ) $(MLX)
 	@echo -e "${NL}${MSG_COMP}${NL}"
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLX_FLAGS)
 	@echo -e "${NL}${MSG_SUCCESS}${NL}"
@@ -48,7 +49,7 @@ $(LIBFT):
 
 $(MLX):
 	@echo -e "${NL}${MSG_MLX42}${NL}"
-	@cmake $(MLX_DIR) -B $(MLX_DIR)build && make -C $(MLX_DIR)build -j4
+	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 
 clean:
 	@echo -e "${NL}${MSG_CLEAN}${NL}"
@@ -59,7 +60,7 @@ fclean: clean
 	@echo -e "${NL}${MSG_FCLEAN}${NL}"
 	$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -rf $(MLX_DIR)build fclean
+	rm -rf $(MLX_DIR)/build fclean
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 00:31:30 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/11/25 21:46:44 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:46:44 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static char	*read_file(int fd, char *buffer, char *remainder)
 	bytes_read = 1;
 	if (!remainder)
 	{
-		remainder = ft_strdup("");
+		remainder = ft_strdup_gnl("");
 		if (!remainder)
 			return (NULL);
 	}
-	while (!ft_strchr(remainder, '\n') && bytes_read != 0)
+	while (!ft_strchr_gnl(remainder, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (handle_read_error(remainder));
 		buffer[bytes_read] = '\0';
-		temp = ft_strjoin(remainder, buffer);
+		temp = ft_strjoin_gnl(remainder, buffer);
 		free(remainder);
 		remainder = temp;
 		if (!remainder)
@@ -56,9 +56,9 @@ static char	*get_line(char *remainder)
 	while (remainder[i] && remainder[i] != '\n')
 		i++;
 	if (remainder[i] == '\n')
-		line = ft_substr(remainder, 0, i + 1);
+		line = ft_substr_gnl(remainder, 0, i + 1);
 	else
-		line = ft_substr(remainder, 0, i);
+		line = ft_substr_gnl(remainder, 0, i);
 	return (line);
 }
 
@@ -72,7 +72,7 @@ static char	*update_remainder(char *remainder)
 		i++;
 	if (!remainder[i])
 		return (handle_read_error(remainder));
-	temp = ft_substr(remainder, i + 1, ft_strlen(remainder) - i);
+	temp = ft_substr_gnl(remainder, i + 1, ft_strlen_gnl(remainder) - i);
 	free(remainder);
 	return (temp);
 }

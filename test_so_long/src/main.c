@@ -1,70 +1,64 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 11:18:49 by microbiana        #+#    #+#             */
+/*   Updated: 2025/04/07 23:16:30 by microbiana       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include "../includes/so_long.h"
 
-#define WIDTH 512
-#define HEIGHT 512
-
-static mlx_image_t* image;
-
-void ft_hook(void* param)
+void close_game(void *param)
 {
-	mlx_t* mlx = param;
-
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
-		image->instances[0].y -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
-		image->instances[0].y += 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
-		image->instances[0].x -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
-		image->instances[0].x += 5;
-	
+	Game *game = (Game *)param;
+	free_game(game);
+	exit(EXIT_SUCCESS);
 }
 
-int32_t main(void)
+int32_t main(int argc, char **argv)
 {
-	mlx_t* mlx;
-
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "so_long_X", true)))
+	(void)argv;
+	if(argc != 2)
 	{
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	
-	mlx_texture_t* texture = mlx_load_png("./assets/img/test00.png");
-	if (!texture)
-	{
-		ft_printf(stderr, "Erro ao carregar a textura test00.png\n");
-		mlx_terminate(mlx);
+		ft_printf("Usage: ./so_long <map_file>\n");
 		return (EXIT_FAILURE);
 	}
 
-	image = mlx_texture_to_image(mlx, texture);
-	if (!image)
+	Game *game = ft_calloc(1, sizeof(Game));
+	if(!game)
 	{
-		ft_printf(stderr, "Erro ao converter textura em imagem\n");
-		mlx_delete_texture(texture);
-		mlx_terminate(mlx);
+		ft_printf("Memory allocation failed\n");
 		return (EXIT_FAILURE);
 	}
 
-	// Exibir a imagem na janela
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	if(!parse_map(game, argv[1]))
 	{
-		ft_printf(stderr, "Erro ao exibir a imagem na janela\n");
-		mlx_delete_image(mlx, image);
-		mlx_terminate(mlx);
+		free(game);
+		ft_printf("Failed to parse map [main]\n");
 		return (EXIT_FAILURE);
 	}
 
-		mlx_loop_hook(mlx, ft_hook, mlx);
-
-		mlx_loop(mlx);
-		mlx_terminate(mlx);
-		return (EXIT_SUCCESS);
+	game->tile_size = TILE_SIZE; 
+	game->mlx = mlx_init(game->map.width * game->tile_size,
+					 game->map.height * game->tile_size,
+					 "so_long", false);
+	if (!game->mlx)
+	{
+		ft_printf("Failed to init MLX\n");
+		free_game(game);
+		return (EXIT_FAILURE);
 	}
+
+	load_textures(game);
+	render_map(game);
+
+	mlx_close_hook(game->mlx, close_game, game);
+	mlx_loop(game->mlx); // mostra janela e mantém aberta
+
+	free_game(game); // caso feche
+	return (EXIT_SUCCESS);
+}

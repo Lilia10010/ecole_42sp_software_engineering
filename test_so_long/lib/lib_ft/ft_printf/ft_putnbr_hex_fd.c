@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned_int_fd.c                            :+:      :+:    :+:   */
+/*   ft_putnbr_hex_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 18:28:57 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/11/10 18:31:56 by lpaula-n         ###   ########.fr       */
+/*   Created: 2024/11/08 00:04:20 by lpaula-n          #+#    #+#             */
+/*   Updated: 2025/04/07 17:49:44 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsigned_int_fd(unsigned int n, int fd)
+int	ft_putnbr_hex_fd_print(unsigned int n, int fd, int is_upper)
 {
-	int	len;
+	int		len;
+	char	*base;
 
 	len = 0;
-	if (n / 10)
-		len += ft_putunsigned_int_fd(n / 10, fd);
-	len += ft_putchar_fd(n % 10 + '0', fd);
+	if (is_upper)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (n >= 16)
+		len += ft_putnbr_hex_fd_print(n / 16, fd, is_upper);
+	len += ft_putchar_fd_print(base[n % 16], fd);
 	return (len);
 }

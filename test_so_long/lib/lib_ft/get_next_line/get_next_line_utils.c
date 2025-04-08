@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:53:38 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/11/25 21:10:55 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:45:36 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr_gnl(const char *str, int c)
 {
 	if (!str)
 		return (NULL);
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	size_t	length;
 
@@ -37,7 +37,7 @@ size_t	ft_strlen(const char *str)
 	return (length);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin_gnl(const char *s1, const char *s2)
 {
 	char	*join;
 	size_t	len_s1;
@@ -45,7 +45,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	join = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	join = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!join)
 		return (NULL);
 	len_s1 = -1;
@@ -58,12 +58,12 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (join);
 }
 
-char	*ft_strdup(const char *str)
+char	*ft_strdup_gnl(const char *str)
 {
 	char	*copy;
 	size_t	length;
 
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	copy = (char *)malloc(sizeof(char) * (ft_strlen_gnl(str) + 1));
 	if (!copy)
 		return (NULL);
 	length = -1;
@@ -73,15 +73,15 @@ char	*ft_strdup(const char *str)
 	return (copy);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_gnl(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
 
 	if (!s)
 		return (NULL);
-	if ((size_t)start >= ft_strlen(s))
-		return (ft_strdup(""));
+	if ((size_t)start >= ft_strlen_gnl(s))
+		return (ft_strdup_gnl(""));
 	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (NULL);

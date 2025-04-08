@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:05:05 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/11/10 18:28:33 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:53:47 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 static int	handle_format_specifier(char specifier, va_list args)
 {
 	if (specifier == 'c')
-		return (ft_putchar_fd((char)va_arg(args, int), 1));
+		return (ft_putchar_fd_print((char)va_arg(args, int), 1));
 	if (specifier == 's')
-		return (ft_putstr_fd(va_arg(args, char *), 1));
+		return (ft_putstr_fd_print(va_arg(args, char *), 1));
 	if (specifier == 'p')
-		return (ft_putptr_fd(va_arg(args, void *), 1));
+		return (ft_putptr_fd_print(va_arg(args, void *), 1));
 	if (specifier == 'd' || specifier == 'i')
-		return (ft_putnbr_fd(va_arg(args, int), 1));
+		return (ft_putnbr_fd_print(va_arg(args, int), 1));
 	if (specifier == 'u')
-		return (ft_putunsigned_int_fd(va_arg(args, unsigned int), 1));
+		return (ft_putunsigned_int_fd_print(va_arg(args, unsigned int), 1));
 	if (specifier == 'x' || specifier == 'X')
 		return (
-			ft_putnbr_hex_fd(
+			ft_putnbr_hex_fd_print(
 				va_arg(args, unsigned int), 1, specifier == 'X'
 			)
 		);

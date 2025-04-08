@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   handle_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 18:11:17 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/11/10 18:32:26 by lpaula-n         ###   ########.fr       */
+/*   Created: 2025/04/07 13:23:58 by microbiana        #+#    #+#             */
+/*   Updated: 2025/04/07 21:48:34 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "so_long.h"
 
-int	ft_putchar_fd(char c, int fd)
+void free_game(Game *game)
 {
-	return (write(fd, &c, 1));
+	if (!game)
+		return;
+
+	if (game->map.map)
+	{
+		for (int i = 0; game->map.map[i]; i++)
+			free(game->map.map[i]);
+		free(game->map.map);
+	}
+
+	free(game);
 }

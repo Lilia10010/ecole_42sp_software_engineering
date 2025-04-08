@@ -5,7 +5,7 @@ AR		:= ar rcs
 RM		:= rm -f
 
 # Arquivos e diretórios
-NAME		:= liball.a
+NAME		:= libft.a
 LIBFT_DIR	:= libft
 GNL_DIR		:= get_next_line
 PRINTF_DIR	:= ft_printf
