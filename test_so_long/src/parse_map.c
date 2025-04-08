@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/07 22:58:51 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/08 12:17:05 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static int check_map_validity(Game *game)
 			char tile = game->map.map[i][j];
 			if (tile == 'P')
 			{
-				game->player.x = j;
-				game->player.y = i;
+				game->player.position_x = j;
+				game->player.position_y = i;
 				has_player++;
 			}
 			else if (tile == 'E')
@@ -175,7 +175,7 @@ static bool check_map_reachability(Game *game)
 	if (!map_copy)
 		return false;
 
-	flood_fill(map_copy, game->player.x, game->player.y);
+	flood_fill(map_copy, game->player.position_x, game->player.position_y);
 
 	if (has_unreachable_elements(map_copy, game->map.height, 'E'))
 	{
@@ -216,7 +216,7 @@ bool parse_map(Game *game, const char *filename)
 	/* for (int i = 0; i < game->map.height; i++)
 		ft_printf("%s\n", game->map.map[i]); */
 
-		ft_printf("Player pos: x=%d y=%d\n", game->player.x, game->player.y);
+		ft_printf("Player pos: x=%d y=%d\n", game->player.position_x, game->player.position_y);
 
 
 	return (true);

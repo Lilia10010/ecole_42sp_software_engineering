@@ -21,8 +21,8 @@ typedef enum e_tile
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	int		position_x;
+	int		position_y;
 	size_t	moves;
 	size_t	collectibles;
 }	Player;
@@ -64,5 +64,6 @@ void free_game(Game *game);
 void	load_textures(Game *game);
 void render_map(Game *game);
 void draw_tile(Game *game, char tile, int x, int y);
+void my_loop_hook_move(void *param);
 
 #endif

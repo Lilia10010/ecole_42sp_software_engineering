@@ -6,7 +6,7 @@ CFLAGS		:= -Wall -Werror -Wextra -I./includes -I./lib/lib_ft
 RM			:= rm -f
 MLX_FLAGS	:= -ldl -lglfw -pthread -lm
 
-SRCS 		:= ./src/main.c ./src/handle_free.c ./src/parse_map.c ./src/render.c ./src/load_textures.c #./src/movement.c ./src/utils.c
+SRCS 		:= ./src/main.c ./src/handle_free.c ./src/parse_map.c ./src/render.c ./src/load_textures.c ./src/movement.c #./src/utils.c
 LIBFT_DIR	:= ./lib/lib_ft
 MLX_DIR		:= lib/MLX42
 OBJ_DIR		:= obj

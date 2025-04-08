@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:18:49 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/07 23:16:30 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/08 12:13:43 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void close_game(void *param)
 	free_game(game);
 	exit(EXIT_SUCCESS);
 }
+
+
 
 int32_t main(int argc, char **argv)
 {
@@ -55,6 +57,9 @@ int32_t main(int argc, char **argv)
 
 	load_textures(game);
 	render_map(game);
+
+	mlx_loop_hook(game->mlx, &my_loop_hook_move, game);
+	/* mlx_scroll_hook(game->mlx, &my_scrollhook, game); */
 
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_loop(game->mlx); // mostra janela e mantém aberta
