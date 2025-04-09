@@ -56,6 +56,8 @@ typedef struct s_game
 	bool			exit_unlocked;
 	Textures		textures;
 	int				tile_size;
+	double			last_move_time;
+	double			move_delay;
 } Game;
 
 bool parse_map(Game *game, const char *filename);

@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:18:49 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/08 12:13:43 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/09 11:44:38 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void close_game(void *param)
 
 int32_t main(int argc, char **argv)
 {
-	(void)argv;
 	if(argc != 2)
 	{
 		ft_printf("Usage: ./so_long <map_file>\n");
@@ -36,6 +35,9 @@ int32_t main(int argc, char **argv)
 		ft_printf("Memory allocation failed\n");
 		return (EXIT_FAILURE);
 	}
+
+	game->last_move_time = 0.0;
+	game->move_delay = 0.1;
 
 	if(!parse_map(game, argv[1]))
 	{

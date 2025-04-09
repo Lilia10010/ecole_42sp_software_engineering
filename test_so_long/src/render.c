@@ -6,26 +6,11 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 22:21:51 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/07 23:26:07 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/09 11:28:28 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-/* void draw_tile(Game *game, char tile, int x, int y)
-{
-	if (tile == '1')
-		mlx_image_to_window(game->mlx, game->textures.wall, x * TILE_SIZE, y * TILE_SIZE);
-	else
-		mlx_image_to_window(game->mlx, game->textures.floor, x * TILE_SIZE, y * TILE_SIZE);
-
-	if (tile == 'P')
-		mlx_image_to_window(game->mlx, game->textures.player, x * TILE_SIZE, y * TILE_SIZE);
-	else if (tile == 'C')
-		mlx_image_to_window(game->mlx, game->textures.collectible, x * TILE_SIZE, y * TILE_SIZE);
-	else if (tile == 'E')
-		mlx_image_to_window(game->mlx, game->textures.exit, x * TILE_SIZE, y * TILE_SIZE);
-} */
 
 void	put_tile(Game *game, mlx_image_t *img, int x, int y)
 {

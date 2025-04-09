@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:16 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/08 18:02:39 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/09 13:08:49 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,16 @@ static void move_player(Game *game, int dx, int dy)
 	{
 		game->player.collectibles++;
 		game->map.map[new_y][new_x] = EMPTY;
-		ft_printf("🍇 Coletado! Total: %zu/%zu\n", game->player.collectibles, game->map.total_collectibles);
+		ft_printf("🍇 Coletando: %i/%i\n", game->player.collectibles, game->map.total_collectibles);
 	}
 
 	if (next_tile == EXIT)
 	{
 		if (game->player.collectibles == game->map.total_collectibles)
 		{
-			ft_printf("🚪 Saída alcançada! Movimentos: %zu\n", game->player.moves + 1);
-			printf("Movimentos: %zu\n", game->player.moves);
-			printf("Coletáveis: %zu/%zi\n", game->player.collectibles, game->map.total_collectibles);
-			ft_printf("🚶‍♂️ Movimentos: %d\n", (int)game->player.moves);
-ft_printf("🍇 Coletado! Total: %d/%d\n",
-	(int)game->player.collectibles,
-	(int)game->map.total_collectibles);
+			ft_printf("\n🍻 Saída alcançada!\n");
+			ft_printf("👯 Total de movimentos:%i\n", game->player.moves + 1);
+			ft_printf("🍇 Total da coleta: %i/%i\n", game->player.collectibles, game->map.total_collectibles);
 
 
 			mlx_close_window(game->mlx);
@@ -63,13 +59,10 @@ ft_printf("🍇 Coletado! Total: %d/%d\n",
 	game->player.position_y = new_y;
 	game->player.moves++;
 
-	ft_printf("🚶‍♂️ Movimentos: %zu\n", game->player.moves);
-
-	// Atualiza o mapa
-	render_map(game);
+	ft_printf("🚶🏽‍♀️ Movimentos: %i\n", game->player.moves);
+	
+	render_map(game); //para atualizar o mapa a cada movimento
 }
-
-
 
 static void move_player_up(Game *game)
 {
@@ -101,6 +94,10 @@ void my_loop_hook_move(void *param)
 {
 	Game *game = (Game *)param;
 
+	double current_time = mlx_get_time();
+	if (current_time - game->last_move_time < game->move_delay)
+		return;
+
 	check_exit(game);
 	
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
@@ -111,4 +108,6 @@ void my_loop_hook_move(void *param)
 		move_player_left(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D) || mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		move_player_right(game);
+
+	game->last_move_time = current_time; 
 }
