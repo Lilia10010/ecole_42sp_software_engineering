@@ -29,22 +29,23 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char	**map;
-	int		width;
-	int		height;
-	int		exit_x;
-	int		exit_y;
-	size_t	total_collectibles;
+	char		**map;
+	int			width;
+	int			height;
+	int			exit_x;
+	int			exit_y;
+	size_t		total_collectibles;
+	mlx_image_t	*instances[100][100];
 	/* char	**tiles; */
 }	Map;
 
 typedef struct s_textures
 {
-	mlx_image_t	*player;
-	mlx_image_t	*collectible;
-	mlx_image_t	*exit;
-	mlx_image_t	*floor;
-	mlx_image_t	*wall;
+	mlx_texture_t	*player;
+	mlx_texture_t	*collectible;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*wall;
 }	Textures;
 
 typedef struct s_game 
@@ -66,6 +67,7 @@ void free_game(Game *game);
 void	load_textures(Game *game);
 void render_map(Game *game);
 void draw_tile(Game *game, char tile, int x, int y);
-void my_loop_hook_move(void *param);
+//void my_loop_hook_move(void *param);
+void ft_key_hook(mlx_key_data_t keydata, void *param);
 
 #endif

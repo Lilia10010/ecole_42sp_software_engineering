@@ -16,11 +16,13 @@ void free_game(Game *game)
 {
 	if (!game)
 		return;
+	int i;
 
+	i = 0;
 	if (game->map.map)
 	{
-		for (int i = 0; game->map.map[i]; i++)
-			free(game->map.map[i]);
+		while (game->map.map[i])
+			free(game->map.map[i++]);
 		free(game->map.map);
 	}
 

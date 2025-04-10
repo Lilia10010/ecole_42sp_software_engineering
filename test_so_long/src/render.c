@@ -25,32 +25,136 @@ void	put_tile(Game *game, mlx_image_t *img, int x, int y)
 	);
 }
 
+// void	draw_tile(Game *game, char tile, int x, int y)
+// {
+// 	mlx_image_t *img = NULL;
+
+// 	if (tile == '1')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y);
+// 		img = game->textures.wall;
+// 	}
+// 	else if (tile == '0')
+// 	{
+// 		img = game->textures.floor;
+// 	}
+// 	else if (tile == 'P')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y); // chão por baixo
+// 		img = game->textures.player;
+// 	}
+// 	else if (tile == 'C')
+// 	{
+// 		// put_tile(game, game->textures.floor, x, y);
+// 		// img = game->textures.collectible;
+// 		put_tile(game, game->textures.floor, x, y);
+
+// 		// Cria uma imagem nova com base na textura
+// 		img = mlx_texture_to_image(game->mlx, game->textures.collectible);
+// 		if (img)
+// 		{
+// 			mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+// 			game->map.instances[y][x] = img;
+// 		}
+// 		return;
+// 	}
+// 	else if (tile == 'E')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y);
+// 		img = game->textures.exit;
+// 	}
+
+// 	// Coloca a imagem principal e salva a instância
+// 	if (img)
+// 	{
+// 		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+// 		game->map.instances[y][x] = img;
+// 	}
+// }
 
 void	draw_tile(Game *game, char tile, int x, int y)
 {
-	if (tile == '1')
+	mlx_image_t *img = NULL;
+
+	if (tile == '1') // WALL
 	{
-		put_tile(game, game->textures.floor, x, y);
-		put_tile(game, game->textures.wall, x, y);
+		img = mlx_texture_to_image(game->mlx, game->textures.floor);
+		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+		game->map.instances[y][x] = img;
+
+		img = mlx_texture_to_image(game->mlx, game->textures.wall);
 	}
-	else if (tile == '0')
-		put_tile(game, game->textures.floor, x, y);
-	else if (tile == 'P')
+	else if (tile == '0') // FLOOR
 	{
-		put_tile(game, game->textures.floor, x, y);
-		put_tile(game, game->textures.player, x, y);
+		img = mlx_texture_to_image(game->mlx, game->textures.floor);
 	}
-	else if (tile == 'C')
+	else if (tile == 'P') // PLAYER
 	{
-		put_tile(game, game->textures.floor, x, y);
-		put_tile(game, game->textures.collectible, x, y);
+		img = mlx_texture_to_image(game->mlx, game->textures.floor);
+		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+
+		img = mlx_texture_to_image(game->mlx, game->textures.player);
 	}
-	else if (tile == 'E')
+	else if (tile == 'C') // COLLECTIBLE
 	{
-		put_tile(game, game->textures.floor, x, y);
-		put_tile(game, game->textures.exit, x, y);
+		img = mlx_texture_to_image(game->mlx, game->textures.floor);
+		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+
+		img = mlx_texture_to_image(game->mlx, game->textures.collectible);
+	}
+	else if (tile == 'E') // EXIT
+	{
+		img = mlx_texture_to_image(game->mlx, game->textures.floor);
+		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+
+		img = mlx_texture_to_image(game->mlx, game->textures.exit);
+	}
+
+	// Instancia e guarda a imagem final no mapa
+	if (img)
+	{
+		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+		game->map.instances[y][x] = img;
 	}
 }
+
+
+
+// void	draw_tile(Game *game, char tile, int x, int y)
+// {
+// 	mlx_image_t *img = NULL;
+
+// 	if (tile == '1')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y);
+// 		img = game->textures.wall;
+// 	}
+// 	else if (tile == '0')
+// 	{
+// 		img = game->textures.floor;
+// 	}
+// 	else if (tile == 'P')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y); // chão por baixo
+// 		img = game->textures.player;
+// 	}
+// 	else if (tile == 'C')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y);
+// 		img = game->textures.collectible;
+// 	}
+// 	else if (tile == 'E')
+// 	{
+// 		put_tile(game, game->textures.floor, x, y);
+// 		img = game->textures.exit;
+// 	}
+
+// 	if (img)
+// 	{
+// 		mlx_image_to_window(game->mlx, img, x * TILE_SIZE, y * TILE_SIZE);
+// 		game->map.instances[y][x] = img;
+// 	}
+// }
 
 void	render_map(Game *game)
 {

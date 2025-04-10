@@ -26,12 +26,27 @@ static void move_player(Game *game, int dx, int dy)
 	if (next_tile == WALL)
 		return;
 
+	// if (next_tile == COLLECTIBLE)
+	// {
+	// 	game->player.collectibles++;
+	// 	game->map.map[new_y][new_x] = EMPTY;
+	// 	ft_printf("🍇 Coletando: %i/%i\n", game->player.collectibles, game->map.total_collectibles);
+	// }
 	if (next_tile == COLLECTIBLE)
 	{
 		game->player.collectibles++;
 		game->map.map[new_y][new_x] = EMPTY;
+
+		// Remove a imagem visual
+		if (game->map.instances[new_y][new_x])
+		{
+			mlx_delete_image(game->mlx, game->map.instances[new_y][new_x]);
+			game->map.instances[new_y][new_x] = NULL;
+		}
+
 		ft_printf("🍇 Coletando: %i/%i\n", game->player.collectibles, game->map.total_collectibles);
 	}
+
 
 	if (next_tile == EXIT)
 	{
@@ -52,16 +67,19 @@ static void move_player(Game *game, int dx, int dy)
 		}
 	}
 
+	draw_tile(game, EMPTY, game->player.position_x, game->player.position_y);
+
 	// Atualiza posição do player
-	game->map.map[game->player.position_y][game->player.position_x] = EMPTY;
-	game->map.map[new_y][new_x] = PLAYER;
 	game->player.position_x = new_x;
 	game->player.position_y = new_y;
-	game->player.moves++;
 
-	ft_printf("🚶🏽‍♀️ Movimentos: %i\n", game->player.moves);
+	// Redesenha a nova posição com o player
+	draw_tile(game, PLAYER, new_x, new_y);
+
+	// Atualiza o mapa lógico
+	game->map.map[new_y][new_x] = PLAYER;
 	
-	render_map(game); //para atualizar o mapa a cada movimento
+	//render_map(game); //para atualizar o mapa a cada movimento
 }
 
 static void move_player_up(Game *game)
@@ -90,24 +108,25 @@ static void check_exit(Game *game)
 		mlx_close_window(game->mlx);
 }
 
-void my_loop_hook_move(void *param)
+void ft_key_hook(mlx_key_data_t keydata, void *param)
 {
 	Game *game = (Game *)param;
 
-	double current_time = mlx_get_time();
-	if (current_time - game->last_move_time < game->move_delay)
-		return;
-
+	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
+	{
+		if (keydata.key == MLX_KEY_ESCAPE)
+		{
+			mlx_close_window(game->mlx);
+			// critical_error("Window closed by 'ESC'", game);
+		}
+		else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
+			move_player_up(game);
+		else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
+			move_player_down(game);
+		else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
+			move_player_left(game);
+		else if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
+			move_player_right(game);
+	}
 	check_exit(game);
-	
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
-		move_player_up(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S) || mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
-		move_player_down(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A) || mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		move_player_left(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D) || mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		move_player_right(game);
-
-	game->last_move_time = current_time; 
 }

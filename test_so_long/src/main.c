@@ -36,8 +36,8 @@ int32_t main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	game->last_move_time = 0.0;
-	game->move_delay = 0.1;
+	// game->last_move_time = 0.0;
+	// game->move_delay = 0.1;
 
 	if(!parse_map(game, argv[1]))
 	{
@@ -60,8 +60,7 @@ int32_t main(int argc, char **argv)
 	load_textures(game);
 	render_map(game);
 
-	mlx_loop_hook(game->mlx, &my_loop_hook_move, game);
-	/* mlx_scroll_hook(game->mlx, &my_scrollhook, game); */
+	mlx_key_hook(game->mlx, &ft_key_hook, game);
 
 	mlx_close_hook(game->mlx, close_game, game);
 	mlx_loop(game->mlx); // mostra janela e mantém aberta
