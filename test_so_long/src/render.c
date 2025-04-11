@@ -6,13 +6,13 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 22:21:51 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/09 11:28:28 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/10 23:03:24 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	put_tile(Game *game, mlx_image_t *img, int x, int y)
+/* void	put_tile(Game *game, mlx_image_t *img, int x, int y)
 {
 	if (!img)
 		return;
@@ -23,7 +23,7 @@ void	put_tile(Game *game, mlx_image_t *img, int x, int y)
 		x * TILE_SIZE,
 		y * TILE_SIZE
 	);
-}
+} */
 
 // void	draw_tile(Game *game, char tile, int x, int y)
 // {

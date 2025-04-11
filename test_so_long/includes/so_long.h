@@ -36,7 +36,6 @@ typedef struct s_map
 	int			exit_y;
 	size_t		total_collectibles;
 	mlx_image_t	*instances[100][100];
-	/* char	**tiles; */
 }	Map;
 
 typedef struct s_textures
@@ -67,7 +66,11 @@ void free_game(Game *game);
 void	load_textures(Game *game);
 void render_map(Game *game);
 void draw_tile(Game *game, char tile, int x, int y);
-//void my_loop_hook_move(void *param);
 void ft_key_hook(mlx_key_data_t keydata, void *param);
+void	move_player(Game *game, int horizontal_move, int vertical_move);
+bool check_map_reachability(Game *game);
+int check_map_shape_and_walls(Game *game);
+bool parse_map(Game *game, const char *filename);
+int check_map_validity(Game *game);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_reachability.c                           :+:      :+:    :+:   */
+/*   map_reachability.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 21:37:15 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/07 21:38:17 by microbiana       ###   ########.fr       */
+/*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
+/*   Updated: 2025/04/10 22:59:08 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ static char **copy_map(char **original, int height)
 
 static void flood_fill(char **map, int x, int y)
 {
+	if (y < 0 || x < 0 || !map[y] || !map[y][x])
+		return;
 	if (map[y][x] == '1' || map[y][x] == 'F')
 		return;
-	map[y][x] = 'F'; // Marca como visitado
+	map[y][x] = 'F';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
 	flood_fill(map, x, y - 1);
 }
-
 
 static bool has_unreachable_elements(char **map, int height, char target)
 {
@@ -48,14 +49,20 @@ static bool has_unreachable_elements(char **map, int height, char target)
 	return false;
 }
 
+static void free_map(char **map, int height)
+{
+	for (int i = 0; i < height; i++)
+		free(map[i]);
+	free(map);
+}
 
-static bool check_map_reachability(Game *game)
+bool check_map_reachability(Game *game)
 {
 	char **map_copy = copy_map(game->map.map, game->map.height);
 	if (!map_copy)
 		return false;
 
-	flood_fill(map_copy, game->player.x, game->player.y);
+	flood_fill(map_copy, game->player.position_x, game->player.position_y);
 
 	if (has_unreachable_elements(map_copy, game->map.height, 'E'))
 	{
