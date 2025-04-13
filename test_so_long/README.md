@@ -34,13 +34,12 @@ so_long/
 ├── Makefile # Script de compilação do projeto
 └── README.md # Documentação do projeto
 
-
 TODO:
 
-[ ] ao invés da gambiarra usar o instance da MLX ==> mlx_instance_t *inst = &collectible_image->instances[i] ==> inst->enabled = false;
+[ ] ao invés da gambiarra usar o instance da MLX ==> mlx_instance_t \*inst = &collectible_image->instances[i] ==> inst->enabled = false;
 [ ] deletar as texturas:
-    mlx_delete_texture(game->textures.wall);
-    mlx_delete_texture(game->textures.floor);
-    mlx_delete_texture(game->textures.player);
-    mlx_delete_texture(game->textures.collectible);
-    mlx_delete_texture(game->textures.exit);
+mlx_delete_texture(game->textures.wall);
+mlx_delete_texture(game->textures.floor);
+mlx_delete_texture(game->textures.player);
+mlx_delete_texture(game->textures.collectible);
+mlx_delete_texture(game->textures.exit);

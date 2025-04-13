@@ -6,8 +6,6 @@
 # include "../lib/lib_ft/lib_ft.h"
 #include "../lib/MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 800
-#define HEIGHT 600
 #define TILE_SIZE 64
 
 typedef enum e_tile
@@ -60,8 +58,16 @@ typedef struct s_game
 	double			move_delay;
 } Game;
 
-bool parse_map(Game *game, const char *filename);
+void close_game(void *param);
 void free_game(Game *game);
+void	free_map(char **map, int height);
+void	free_textures(Game *game);
+
+int return_error(Game *game, const char *message, int code);
+void	exit_with_error(Game *game, const char *msg);
+void	check_exit(Game *game);
+
+bool parse_map(Game *game, const char *filename);
 
 void	load_textures(Game *game);
 void render_map(Game *game);
