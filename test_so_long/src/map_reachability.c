@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/12 18:31:08 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 13:54:40 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static	bool	has_unreachable_elements(char **map, int height, char target)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < height)
 	{
+		j = 0;
 		while (map[i][j])
 		{
 			if (map[i][j] == target)

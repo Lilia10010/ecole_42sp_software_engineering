@@ -1,7 +1,6 @@
 NAME := so_long
 
 CC			:= gcc
-#CFLAGS		:= -Wall -Werror -Wextra -I./includes
 CFLAGS		:= -Wall -Werror -Wextra -I./includes -I./lib/lib_ft
 RM			:= rm -f
 MLX_FLAGS	:= -ldl -lglfw -pthread -lm
@@ -24,7 +23,7 @@ RED		:= \033[1;31m
 NL		:= \n
 
 MSG_COMP	:= $(YELLOW)======= Compilando $(NAME) =======$(NC)
-MSG_COMPT	:= $(BLUE)======= Inicialiando compilação vrauu =======$(NC)
+MSG_COMPT	:= $(BLUE)======= Inicialiando compilação =======$(NC)
 MSG_LIBFT	:= $(YELLOW)======= Compilando libft =======$(NC)
 MSG_MLX42	:= $(YELLOW)======= Compilando MLX42 =======$(NC)
 MSG_CLEAN	:= $(RED)======= Removendo arquivos objeto =======$(NC)

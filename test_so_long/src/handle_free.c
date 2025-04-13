@@ -6,7 +6,7 @@
 /*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 10:12:04 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/12 19:05:15 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 12:11:45 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,9 @@ void	free_textures(Game *game)
 void	free_game(Game *game)
 {
 	if (!game)
-		return;
-
+		return ;
 	if (game->map.map)
 		free_map(game->map.map, game->map.height);
-	/* if (game->flood.map)
-		free_map(game->flood.map, game->flood.height); */
 	free_textures(game);
 	if (game->mlx)
 		mlx_terminate(game->mlx);

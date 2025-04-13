@@ -54,8 +54,6 @@ typedef struct s_game
 	bool			exit_unlocked;
 	Textures		textures;
 	int				tile_size;
-	double			last_move_time;
-	double			move_delay;
 } Game;
 
 void close_game(void *param);
