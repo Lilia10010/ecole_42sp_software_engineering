@@ -1,0 +1,162 @@
+{
+   <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_catch_exception
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:mlx_init
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:XrmGetStringDatabase
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_XrmInitParseInfo
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:__tls_get_addr
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:__pthread_once_slow
+   ...
+}
+{
+ <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:glfwInit
+   ...
+}
+{
+ <MLX_CODAM_DL_INIT>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_init
+   ...
+}
+
+{
+   <MLX_CODAM_DLOPEN>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_dl_open
+}
+
+{
+   <MLX_CODAM_DLOPEN_IMPL>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:dlopen@@GLIBC_2.34
+   ...
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   fun:strncmp
+   ...
+   fun:dl_open_worker
+}
+
+{
+   <MLX_CODAM_STRNCMP>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:strncmp
+   ...
+   fun:_dl_map_object
+}
+
+
+
+{
+   <MLX_CODAM_SWR>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/dri/swrast_dri.so
+}
+
+{
+   <MLX_CODAM_MLX>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:mlx_init
+   fun:mlx_init_render
+   fun:mlx_compile_shader
+}
+
+{
+   <MLX_CODAM_DL_FIND_OBJECT>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_dl_find_object_update
+   ...
+}
+
+{
+   <MLX_CODAM_DLOPEN_IMPL>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:dlopen@@GLIBC_2.34
+   ...
+}
+{
+   <STDCPP_malloc_suppression>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   fun:_dl_catch_exception
+   fun:dl_open_worker
+   fun:_dl_open
+}
+{
+   <LLVM_malloc_suppression>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
+   fun:_ZN4llvm13StringMapImpl11RehashTableEj
+   fun:_ZN4llvm2cl6Option11addArgumentEv
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   fun:_dl_catch_exception
+}
+
