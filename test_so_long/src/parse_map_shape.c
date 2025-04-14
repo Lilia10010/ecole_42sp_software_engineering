@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_shape.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 13:45:19 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:42:45 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	int	is_horizontal_wall(char *line, int width)
 	return (1);
 }
 
-int	check_map_shape_and_walls(Game *game)
+int	check_map_shape_and_walls(t_Game *game)
 {
 	int	width;
 	int	i;

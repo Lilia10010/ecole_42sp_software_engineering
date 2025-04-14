@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handle_close.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 10:12:04 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 12:12:48 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:36:58 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	check_exit(Game *game)
+void	check_exit(t_Game *game)
 {
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 	{
@@ -23,14 +23,14 @@ void	check_exit(Game *game)
 
 void	close_game(void *param)
 {
-	Game	*game;
+	t_Game	*game;
 
-	game = (Game *)param;
+	game = (t_Game *)param;
 	free_game(game);
 	exit(EXIT_SUCCESS);
 }
 
-int	return_error(Game *game, const char *message, int code)
+int	return_error(t_Game *game, const char *message, int code)
 {
 	ft_printf("\033[31m======= %s =======\033[0m\n", message);
 	if (game)
@@ -40,7 +40,7 @@ int	return_error(Game *game, const char *message, int code)
 	return (code);
 }
 
-void	exit_with_error(Game *game, const char *msg)
+void	exit_with_error(t_Game *game, const char *msg)
 {
 	ft_printf("\033[31m======= %s =======\033[0m\n", msg);
 	free_game(game);

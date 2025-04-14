@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:16 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/11 14:25:41 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:42:19 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static	void	move_player_up(Game *game)
+static	void	move_player_up(t_Game *game)
 {
 	move_player(game, 0, -1);
 }
 
-static	void	move_player_down(Game *game)
+static	void	move_player_down(t_Game *game)
 {
 	move_player(game, 0, 1);
 }
 
-static	void	move_player_left(Game *game)
+static	void	move_player_left(t_Game *game)
 {
 	move_player(game, -1, 0);
 }
 
-static	void	move_player_right(Game *game)
+static	void	move_player_right(t_Game *game)
 {
 	move_player(game, 1, 0);
 }
 
 void	ft_key_hook(mlx_key_data_t keydata, void *param)
 {
-	Game	*game;
+	t_Game	*game;
 
-	game = (Game *)param;
+	game = (t_Game *)param;
 	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_ESCAPE)

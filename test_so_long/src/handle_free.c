@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 10:12:04 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 12:11:45 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:36:25 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_map(char **map, int height)
 	free(map);
 }
 
-void	free_textures(Game *game)
+void	free_textures(t_Game *game)
 {
 	if (game->textures.wall)
 		mlx_delete_texture(game->textures.wall);
@@ -38,7 +38,7 @@ void	free_textures(Game *game)
 		mlx_delete_texture(game->textures.exit);
 }
 
-void	free_game(Game *game)
+void	free_game(t_Game *game)
 {
 	if (!game)
 		return ;

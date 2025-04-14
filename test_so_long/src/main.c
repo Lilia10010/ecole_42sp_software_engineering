@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:18:49 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 12:10:31 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:39:32 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static	void	start_game(Game *game)
+static	void	start_game(t_Game *game)
 {
 	load_textures(game);
 	render_map(game);
@@ -24,9 +24,9 @@ static	void	start_game(Game *game)
 
 int32_t	main(int argc, char **argv)
 {
-	Game	*game;
+	t_Game	*game;
 
-	game = ft_calloc(1, sizeof(Game));
+	game = ft_calloc(1, sizeof(t_Game));
 	if (argc != 2)
 		return (return_error(game, "Usage: ./so_long <map>", EXIT_FAILURE));
 	if (!game)

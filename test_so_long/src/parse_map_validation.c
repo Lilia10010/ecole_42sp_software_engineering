@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_validation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 13:33:11 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:43:16 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	is_valid_tile(char tile, Game *game, int i, int j)
+int	is_valid_tile(char tile, t_Game *game, int i, int j)
 {
 	if (tile == 'P')
 	{
@@ -46,7 +46,7 @@ void	process_result(int result, int *has_player, int *has_exit, int *valid)
 		*valid = 0;
 }
 
-int	check_map_validity(Game *game)
+int	check_map_validity(t_Game *game)
 {
 	int	has_player;
 	int	has_exit;

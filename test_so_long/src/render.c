@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 22:21:51 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 14:42:32 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:43:56 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	draw_tile(Game *game, char tile, int x, int y)
+void	draw_tile(t_Game *game, char tile, int x, int y)
 {
 	mlx_image_t	*floor_img;
 	mlx_image_t	*tile_img;
@@ -38,7 +38,7 @@ void	draw_tile(Game *game, char tile, int x, int y)
 		game->map.instances[y][x] = floor_img;
 }
 
-void	render_map(Game *game)
+void	render_map(t_Game *game)
 {
 	int		y;
 	int		x;

@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 14:54:06 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 22:47:19 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static	bool	is_valid_filename(const char *filename)
+{
+	int	len;
+
+	len = 0;
+	if (!filename)
+		return (false);
+	len = ft_strlen(filename);
+	if (len < 5)
+		return (false);
+	if (ft_strncmp(filename + len - 4, ".ber", 4) != 0)
+		return (false);
+	return (true);
+}
 
 static	int	count_map_lines(const char *filename)
 {
@@ -62,10 +77,17 @@ static	char	**read_map_lines(const char *filename, int *height)
 	return (map);
 }
 
-bool	parse_map(Game *game, const char *filename)
+bool	parse_map(t_Game *game, const char *filename)
 {
 	int	height;
+	int	fd;
 
+	if (!is_valid_filename(filename))
+		return (false);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (false);
+	close(fd);
 	game->map.map = read_map_lines(filename, &height);
 	if (!game->map.map)
 		return (false);

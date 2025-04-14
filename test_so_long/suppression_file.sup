@@ -96,9 +96,6 @@
    ...
    fun:_dl_map_object
 }
-
-
-
 {
    <MLX_CODAM_SWR>
    Memcheck:Leak
@@ -106,7 +103,6 @@
    fun:calloc
    obj:/usr/lib/x86_64-linux-gnu/dri/swrast_dri.so
 }
-
 {
    <MLX_CODAM_MLX>
    Memcheck:Leak
@@ -159,4 +155,5 @@
    fun:_dl_init
    fun:_dl_catch_exception
 }
+
 

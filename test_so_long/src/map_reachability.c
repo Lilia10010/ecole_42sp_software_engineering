@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reachability.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:02:01 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 13:54:40 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:40:46 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static	bool	has_unreachable_elements(char **map, int height, char target)
 	return (false);
 }
 
-bool	check_map_reachability(Game *game)
+bool	check_map_reachability(t_Game *game)
 {
 	char	**map_copy;
 

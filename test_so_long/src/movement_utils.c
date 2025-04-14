@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   movement_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:16 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 15:06:39 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:41:49 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static	int	is_valid_move(Game *game, int x, int y)
+static	int	is_valid_move(t_Game *game, int x, int y)
 {
 	if (y < 0 || y >= game->map.height || x < 0 || x >= game->map.width)
 		return (0);
@@ -21,7 +21,7 @@ static	int	is_valid_move(Game *game, int x, int y)
 	return (1);
 }
 
-static	void	handle_collectible(Game *game, int x, int y)
+static	void	handle_collectible(t_Game *game, int x, int y)
 {
 	game->player.collectibles++;
 	game->map.map[y][x] = EMPTY;
@@ -32,7 +32,7 @@ static	void	handle_collectible(Game *game, int x, int y)
 	}
 }
 
-static	int	handle_exit(Game *game)
+static	int	handle_exit(t_Game *game)
 {
 	if (game->player.collectibles == game->map.total_collectibles)
 	{
@@ -42,7 +42,7 @@ static	int	handle_exit(Game *game)
 	return (0);
 }
 
-static	void	update_player_position(Game *game, int new_x, int new_y)
+static	void	update_player_position(t_Game *game, int new_x, int new_y)
 {
 	draw_tile(game, EMPTY, game->player.position_x, game->player.position_y);
 	game->player.position_x = new_x;
@@ -53,7 +53,7 @@ static	void	update_player_position(Game *game, int new_x, int new_y)
 	ft_printf("Movies: %i\n", game->player.moves);
 }
 
-void	move_player(Game *game, int horizontal_move, int vertical_move)
+void	move_player(t_Game *game, int horizontal_move, int vertical_move)
 {
 	int		new_x;
 	int		new_y;

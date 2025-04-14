@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 22:22:52 by microbiana        #+#    #+#             */
-/*   Updated: 2025/04/13 12:08:25 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/04/13 21:37:07 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	load_textures(Game *game)
+void	load_textures(t_Game *game)
 {
 	game->textures.wall = mlx_load_png("assets/img/wall.png");
 	game->textures.floor = mlx_load_png("assets/img/floor.png");
