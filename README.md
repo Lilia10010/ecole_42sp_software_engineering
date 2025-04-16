@@ -95,16 +95,16 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-<table style="border:none;">
+<table>
   <tr>
-  <td style="vertical-align: top; width: 200px; text-align: center;">
+  <td style="vertical-align: top; width: 200px; text-align: center; border: none;">
 
   ### [Libft](/libft)
 
   <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
   </td>
 
-  <td style="padding-top: 26px;">
+  <td style="padding-top: 26px; border: none;">
 
   > &nbsp; &nbsp; &nbsp;
   >
