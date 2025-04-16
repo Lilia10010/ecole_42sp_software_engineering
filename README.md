@@ -94,17 +94,16 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 > &nbsp; &nbsp; &nbsp;
 
 ---
+<div>
 
-<table>
-  <tr>
-  <td style=" width: 200px; text-align: center; border-color: transparent;">
 
   ### [Libft](/libft)
 
   <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
-  </td>
 
-  <td style="padding-top: 26px; border-color: transparent !important;">
+</div>
+
+  <div>
 
   > &nbsp; &nbsp; &nbsp;
   >
@@ -112,10 +111,8 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
   > -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
   >
   > &nbsp; &nbsp; &nbsp;
+  </div>
 
-  </td>
-  </tr>
-</table>
 
 
 <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
