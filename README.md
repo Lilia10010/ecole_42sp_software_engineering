@@ -95,21 +95,33 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### [Libft](/libft)
+<table>
+  <tr>
+    <td style="vertical-align: top; width: 200px; text-align: center;">
 
-<img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+  ### [Libft](/libft)
 
-> &nbsp; &nbsp; &nbsp;
->
-> -   **Objetivo**: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
-> -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
->
-> &nbsp; &nbsp; &nbsp;
+  <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+    </td>
+  
+  <td style="padding-top: 26px;">
 
-<div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
-<p align="center" style="border: none;color: #ff5ccd;">
-  Gráfico curricular mais f# das galáxias! 🚀
-</p>
+  > &nbsp; &nbsp; &nbsp;
+  >
+  > -   **Objetivo**: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
+  > -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
+  >
+  > &nbsp; &nbsp; &nbsp;
 
-<img src="assets/graph-cursus.png" alt="gráfico do curso"/>
-</div>
+  <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
+  <p align="center" style="border: none;color: #ff5ccd;">
+    Gráfico curricular mais f# das galáxias! 🚀
+  </p>
+
+  <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
+  </div>
+
+
+  </td>
+  </tr>
+</table>
