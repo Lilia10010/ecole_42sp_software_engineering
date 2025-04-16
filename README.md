@@ -104,7 +104,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
   <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
   </td>
 
-  <td style="padding-top: 26px; border: none;">
+  <td style="padding-top: 26px; border: none !important;">
 
   > &nbsp; &nbsp; &nbsp;
   >
