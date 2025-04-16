@@ -95,7 +95,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-<table>
+<table border="0" style="border-collapse: collapse;">
   <tr>
   <td style="vertical-align: top; width: 200px; text-align: center; border: none;">
 
