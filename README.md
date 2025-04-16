@@ -1,8 +1,8 @@
 <p align="center">
   <img src="assets/42sp-logo.svg" alt="logo ecole 42 sp" style="display: block; margin-bottom: 10px;width: 200px;filter: drop-shadow(0 0 1rem #ffffff);"/>
-  <div align="center" style="align: center; min-height: 275px;">
+<!--   <div align="center" style="align: center; min-height: 275px;">
   <img src="https://badge.mediaplus.ma/binary/lpaula-n?1337Badge=off&UM6P=off" alt="lpaula-n's 42 stats" style="display: block;"/>
-  </div>
+  </div> -->
 </p>
 
 <div style="border-bottom: 1px solid #e1e4e8; padding-bottom: 10px;">
