@@ -28,14 +28,18 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### [Push_swap](/push_swap)
+### Next => tô vendo 🦇
 
 ⚠️ Work in Progress ⚠️
+
+---
+
+### [Push_swap](/push_swap)
 
 <img src="assets/badges/push_swape.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
-
+>
 > -   **Objetivo**: O objetivo deste projeto é criar um programa que ordena uma pilha de números inteiros, utilizando duas pilhas auxiliares e um conjunto limitado de operações. O desafio é encontrar a sequência de operações mais eficiente para ordenar a pilha, minimizando o número de movimentos necessários.
 > -   **Habilidades**: `Algoritmos` `estruturas de dados` `pilhas` `ordenamento`
 >
@@ -81,7 +85,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 > &nbsp; &nbsp; &nbsp;
 
 ---
-<!-- 
+
 ### [Get_next_line](/get_next_line)
 
 <img src="assets/badges/get_next_linee.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
@@ -91,29 +95,15 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 > -   **Objetivo**: O objetivo desse projeto é criar uma função que leia uma linha de um arquivo ou de um fluxo de entrada (stdin) sem carregar o arquivo inteiro na memória. A função deve ser capaz de lidar com múltiplas chamadas e ler até o final do arquivo ou até encontrar uma linha completa.
 > -   **Habilidades**: `Manipulação de arquivo` `buffers e leitura eficiente de dados`
 >
-> &nbsp; &nbsp; &nbsp; -->
-
-  <div style="display: flex; align-items: center;">
-    <div style="text-align:center;">
-        <h3 style="width: 300px;"><a href="/get_next_line">Get Next Line</a></h3>
-        <img src="assets/badges/get_next_linee.png" alt="get next line" style="width: 100px; padding-bottom: 8px;" />
-    </div>  
-  <blockquote style="padding: 16px;">
-      <p>
-          <strong>Objetivo</strong>: O objetivo desse projeto é criar uma função que leia uma linha de um arquivo ou de um fluxo de entrada (stdin) sem carregar o arquivo inteiro na memória. A função deve ser capaz de lidar com múltiplas chamadas e ler até o final do arquivo ou até encontrar uma linha completa.
-      </p>
-      <p>
-          <strong>Habilidades</strong>: <code>Manipulação de arquivo</code>, <code>buffers e leitura eficiente de dadosa</code>
-      </p>
-  </blockquote> 
-</div>
+> &nbsp; &nbsp; &nbsp;
 
 ---
-<!-- <div style="flex">
+<div style="flex">
+
 
   ### [Libft](/libft)
 
-  <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px;padding-bottom: 8px;" />
+  <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 </div>
 
@@ -125,27 +115,19 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
   > -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
   >
   > &nbsp; &nbsp; &nbsp;
-  </div> -->
+  </div>
 
-  <div style="display: flex; align-items: center; justify-content: start;">
-    <div style="text-align:center;">
-        <h3 style="width: 300px;"><a href="/libft">Libft</a></h3>
-        <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; padding-bottom: 8px;" />
-    </div>  
-  <blockquote style="padding: 16px;">
-      <p>
-          <strong>Objetivo</strong>: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
-      </p>
-      <p>
-          <strong>Habilidades</strong>: <code>Programação em C</code>, <code>manipulação de memória</code>, <code>listas e estruturas de dados básicas</code>
-      </p>
-  </blockquote> 
-</div>
+
+
+
 
 <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
   <p align="center" style="border: none;color: #ff5ccd;">
-    Gráfico curricular mais f# das galáxias! 🚀
+  Gráfico curricular mais f# das galáxias! 🚀
   </p>
 
   <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
 </div>
+
+
+
