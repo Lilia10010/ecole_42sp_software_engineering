@@ -33,3 +33,12 @@ so_long/
 │ ├── hud_display.c # Contador de movimentos e informações na tela
 ├── Makefile # Script de compilação do projeto
 └── README.md # Documentação do projeto
+
+TODO:
+
+[ ] ao invés da gambiarra usar o instance da MLX ==> mlx_instance_t \*inst = &collectible_image->instances[i] ==> inst->enabled = false;
+[ ] deletar as texturas:
+[ ] valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=suppression_file.sup ./so_long maps/test2.ber
+
+
+[ ] valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --gen-suppressions=all --suppressions=suppression_file.sup  ./so_long maps/testsdf2.ber
