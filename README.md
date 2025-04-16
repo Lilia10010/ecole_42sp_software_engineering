@@ -32,11 +32,25 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ⚠️ Work in Progress ⚠️
 
+
+---
+
+### [So Long](/so_long)
+
+<img src="assets/badges/so_longe.png" alt="so long" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: Desenvolver um jogo 2D simples, no estilo de um labirinto, onde o jogador deve coletar itens e alcançar a saída do mapa. O projeto foca na leitura e validação de mapas, movimentação do personagem e renderização gráfica utilizando a MLX42, uma biblioteca gráfica baseada em OpenGL.
+> -   **Habilidades**: `Gerenciamento de Memória` `leitura de arquivos` `validação de mapas` `eventos de teclado` `lógica de jogo` `renderização com MLX42` `controle de janelas` `depuração e tratamento de erros`
+>
+> &nbsp; &nbsp; &nbsp;
+
 ---
 
 ### [Push_swap](/push_swap)
 
-<img src="assets/badges/push_swape.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+<img src="assets/badges/push_swape.png" alt="push swap" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
 >
@@ -49,7 +63,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ### [Pipex](/pipex)
 
-<img src="assets/badges/pipexe.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+<img src="assets/badges/pipexe.png" alt="pipex" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
 >
@@ -75,7 +89,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ### [Ft_printf](/ft_printf)
 
-<img src="assets/badges/ft_printfe.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+<img src="assets/badges/ft_printfe.png" alt="ft printf" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
 >
@@ -88,7 +102,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ### [Get_next_line](/get_next_line)
 
-<img src="assets/badges/get_next_linee.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+<img src="assets/badges/get_next_linee.png" alt="get next line" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 > &nbsp; &nbsp; &nbsp;
 >
@@ -103,7 +117,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
   ### [Libft](/libft)
 
-  <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+  <img src="assets/badges/libfte.png" alt="libft" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
 </div>
 
