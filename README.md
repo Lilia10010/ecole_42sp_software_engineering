@@ -97,13 +97,13 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 <table>
   <tr>
-    <td style="vertical-align: top; width: 200px; text-align: center;">
+  <td style="vertical-align: top; width: 200px; text-align: center;">
 
   ### [Libft](/libft)
 
   <img src="assets/badges/libfte.png" alt="Born2beRoot" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
-    </td>
-  
+  </td>
+
   <td style="padding-top: 26px;">
 
   > &nbsp; &nbsp; &nbsp;
@@ -113,15 +113,15 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
   >
   > &nbsp; &nbsp; &nbsp;
 
-  <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
-  <p align="center" style="border: none;color: #ff5ccd;">
-    Gráfico curricular mais f# das galáxias! 🚀
-  </p>
-
-  <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
-  </div>
-
-
   </td>
   </tr>
 </table>
+
+
+<div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
+  <p align="center" style="border: none;color: #ff5ccd;">
+  Gráfico curricular mais f# das galáxias! 🚀
+  </p>
+
+  <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
+</div>
