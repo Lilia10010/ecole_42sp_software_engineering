@@ -1,6 +1,6 @@
 #include <stdio.h>   // Inclui a biblioteca padrão de entrada/saída para usar printf e perror.
 #include <pthread.h> // Inclui a biblioteca POSIX Threads para criar e gerenciar threads.
-
+#include <stdlib.h>
 // Define uma constante para o número de threads a serem criadas (5 threads).
 #define NUM_THREADS 11
 pthread_mutex_t print_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -41,6 +41,7 @@ int main() {
         pthread_join(threads[i], NULL);
     }
 
+	pthread_mutex_destroy(&print_mutex);
     // Imprime uma mensagem indicando que todas as threads concluíram.
     printf("All threads completed.\n");
     // Retorna 0 para indicar que o programa terminou com sucesso.

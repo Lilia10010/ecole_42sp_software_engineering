@@ -1,3 +1,12 @@
+philo/
+├── Makefile
+├── main.c
+├── philo.h
+├── init.c
+├── routine.c
+├── time.c
+└── utils.c
+
 gcc deadlock.c -o deadlock -pthread
 valgrind --tool=helgrind ./deadlock
 
