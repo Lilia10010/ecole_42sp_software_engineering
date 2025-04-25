@@ -4,10 +4,10 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-pthread_mutex_t fork01 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t fork02 = PTHREAD_MUTEX_INITIALIZER;
+#define NUM_PHILOSOPHERS 5
 
-long last_meal_time[2];
+pthread_mutex_t *forks;
+long *last_meal_time;
 int running = 1;
 
 long get_time_ms()
@@ -19,49 +19,70 @@ long get_time_ms()
 
 void think(int id)
 {
-    printf("%ld ms fisolofo %d está pensando \n", get_time_ms(), id);
+    printf("%ld ms fisolofo %d está pensando 🤔 \n", get_time_ms(), id);
     usleep(200000);
 }
 
 void eat(int id)
 {
-    printf("%ld ms fisolofo %d esta comendo \n", get_time_ms(), id);
+    printf("%ld ms fisolofo %d esta comendo 🍝 \n", get_time_ms(), id);
     usleep(300000);
     last_meal_time[id] = get_time_ms();
+}
+
+void pickup_forks(int id)
+{
+	int left_fork = id;
+	int right_fork = (id + 1) % NUM_PHILOSOPHERS;
+
+	if (id % 2 == 0)
+    {
+        pthread_mutex_lock(&forks[left_fork]);
+        printf("%ld ms filósofo %d pegou o garfo esquerdo %d 🍴\n", get_time_ms(), id, left_fork);
+        usleep(100000);  // Pequeno delay para simular tempo de ação
+        
+        pthread_mutex_lock(&forks[right_fork]);
+        printf("%ld ms filósofo %d pegou o garfo direito %d 🍴\n", get_time_ms(), id, right_fork);
+    }
+    else
+    {
+        pthread_mutex_lock(&forks[right_fork]);
+        printf("%ld ms filósofo %d pegou o garfo direito %d 🍴\n", get_time_ms(), id, right_fork);
+        usleep(100000);  // Pequeno delay para simular tempo de ação
+        
+        pthread_mutex_lock(&forks[left_fork]);
+        printf("%ld ms filósofo %d pegou o garfo esquerdo %d 🍴\n", get_time_ms(), id, left_fork);
+    }
+}
+
+void putdown_forks(int id)
+{
+	int left_fork = id;
+	int right_fork = (id + 1) % NUM_PHILOSOPHERS;
+
+	if (id % 2 == 0)
+    {
+        pthread_mutex_unlock(&forks[right_fork]);
+        pthread_mutex_unlock(&forks[left_fork]);
+    }
+    else
+    {
+        pthread_mutex_unlock(&forks[left_fork]);
+        pthread_mutex_unlock(&forks[right_fork]);
+    }
+    
+    printf("%ld ms filósofo %d largou os garfos\n", get_time_ms(), id);
 }
 
 void *philosopher(void *arg)
 {
     int id = *(int *)arg;
-    pthread_mutex_t *first;
-    pthread_mutex_t *second;
-
-    if (id == 0) 
-    {
-        first = &fork01;
-        second = &fork02;
-    } else 
-    {
-        first = &fork02;
-        second = &fork01;
-    }
-    
-
-    while (1)
+        while (running)
     {
         think(id);
-        pthread_mutex_lock(first);
-        printf("%ld ms fisolofo %d pegou o 1° garfo 🍴\n", get_time_ms(), id);
-        usleep(100000);
-
-        pthread_mutex_lock(second);
-        printf("%ld ms fisolofo %d pegou o 2° garfo 🍴\n", get_time_ms(), id);
-
+        pickup_forks(id);
         eat(id);
-
-        pthread_mutex_unlock(second);
-        pthread_mutex_unlock(first);
-        printf("%ld ms filósofo %d largou os galfus \n", get_time_ms(), id);
+        putdown_forks(id);
     }
     return (NULL);
 }
@@ -69,16 +90,17 @@ void *philosopher(void *arg)
 void *monitor(void *arg)
 {
     (void)arg;
-    while(1)
+    while(running)
     {
         int i = 0;
 
         long now = get_time_ms();
-        while (i < 2)
+        while (i < NUM_PHILOSOPHERS)
         {
             if (now - last_meal_time[i] > 70000)
             {
                 printf("%ld filósofo %d morreu de fome 💀 \n", now, i);
+				running = 0;
                 exit(1);
             }
             ++i;
@@ -90,22 +112,49 @@ void *monitor(void *arg)
 
 int main(void)
 {
-    pthread_t philos[2];
+    pthread_t *philos;
     pthread_t watcher;
-    int ids[2] = {0, 1};
+    int *ids;
+	long start = get_time_ms();
+	
 
-    long start = get_time_ms();
-    last_meal_time[0] = start;
-    last_meal_time[1] = start;
+	forks = (pthread_mutex_t *)malloc(NUM_PHILOSOPHERS * sizeof(pthread_mutex_t));
+	last_meal_time = (long *)malloc(NUM_PHILOSOPHERS * sizeof(long));
+	philos = (pthread_t *)malloc(NUM_PHILOSOPHERS * sizeof(pthread_t));
+	ids = (int *)malloc(NUM_PHILOSOPHERS * sizeof(int));
 
-    pthread_create(&philos[0], NULL, philosopher, &ids[0]);
-    pthread_create(&philos[1], NULL, philosopher, &ids[1]);
+	if (!forks || !last_meal_time || !philos || !ids)
+	{
+		printf("Erro na alocação de memória\n");
+		return (1);
+	}
 
-    pthread_create(&watcher, NULL, monitor, NULL);
+	//p inicializar as mutex e tempo de refeição
+	for (int i = 0; i < NUM_PHILOSOPHERS; i++) {
+        pthread_mutex_init(&forks[i], NULL);
+        last_meal_time[i] = start;
+        ids[i] = i;
+    }
+    
+    //hreads dos filósofos
+    for (int i = 0; i < NUM_PHILOSOPHERS; i++)
+		pthread_create(&philos[i], NULL, philosopher, &ids[i]);
 
-    pthread_join(philos[0], NULL);
-    pthread_join(philos[1], NULL);
-    pthread_join(watcher, NULL);
+	pthread_create(&watcher, NULL, monitor, NULL);
+
+	for (int i = 0; i < NUM_PHILOSOPHERS; i++)
+		pthread_join(philos[i], NULL);
+
+	pthread_join(watcher, NULL);
+
+	//liberar memoria e destruir mutex
+	for (int i = 0; i < NUM_PHILOSOPHERS; i++)
+		pthread_mutex_destroy(&forks[i]);
+
+	free(forks);
+	free(last_meal_time);
+	free(philos);
+	free(ids);
 
     printf("simulação finalizada com sucesso \n");
 

@@ -24,7 +24,7 @@ void *fisolopho(void *arg)
 
 	while(1)
 	{
-		log_status_philo(id, "está pensando cricricri");
+		log_status_philo(id, "está pensando cricricri 🤔");
 		usleep(500000);
 
 		log_status_philo(id, "tentando pegar o garfo 1 🥢");
@@ -45,7 +45,7 @@ void *fisolopho(void *arg)
 		pthread_mutex_unlock(&fork01);
 		log_status_philo(id, "soltou o garfo 01");
 
-		log_status_philo(id, "esta dormindo");
+		log_status_philo(id, "esta dormindo 😴");
 		usleep(300000);
 	}
 	return (NULL);
