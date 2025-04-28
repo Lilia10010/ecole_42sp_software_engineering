@@ -18,13 +18,18 @@ long get_time_ms()
     return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }
 
-void think(int id)
+void handle_think(int id)
 {
     printf("%ld ms fisolofo %d está pensando 🤔\n", get_time_ms(), id);
     usleep(200000);
 }
+void handle_sleep(int id)
+{
+    printf("%ld ms fisolofo %d está dormindo 🛌 💤\n", get_time_ms(), id);
+    usleep(200000);
+}
 
-void eat(int id)
+void handle_eat(int id)
 {
     // Usar mutex para garantir que apenas um filósofo come por vez
     pthread_mutex_lock(&dining_mutex);
@@ -32,7 +37,7 @@ void eat(int id)
     last_meal_time[id] = get_time_ms();
 
     printf("%ld ms fisolofo %d esta comendo 🍝\n", get_time_ms(), id);
-    usleep(300000);
+    usleep(200000);
     
     pthread_mutex_unlock(&dining_mutex);
 }
@@ -49,7 +54,7 @@ void pickup_forks(int id)
     {
         pthread_mutex_lock(&forks[left_fork]);
         printf("%ld ms filósofo %d pegou o garfo esquerdo %d 🍴\n", get_time_ms(), id, left_fork);
-        usleep(100000);  // Pequeno delay para simular tempo de ação
+       // usleep(100000);  // Pequeno delay para simular tempo de ação
         
         pthread_mutex_lock(&forks[right_fork]);
         printf("%ld ms filósofo %d pegou o garfo direito %d 🍴\n", get_time_ms(), id, right_fork);
@@ -58,7 +63,7 @@ void pickup_forks(int id)
     {
         pthread_mutex_lock(&forks[right_fork]);
         printf("%ld ms filósofo %d pegou o garfo direito %d 🍴\n", get_time_ms(), id, right_fork);
-        usleep(100000);  // Pequeno delay para simular tempo de ação
+       // usleep(100000);  // Pequeno delay para simular tempo de ação
         
         pthread_mutex_lock(&forks[left_fork]);
         printf("%ld ms filósofo %d pegou o garfo esquerdo %d 🍴\n", get_time_ms(), id, left_fork);
@@ -83,7 +88,7 @@ void putdown_forks(int id)
         pthread_mutex_unlock(&forks[right_fork]);
     }
     
-    printf("%ld ms filósofo %d largou os garfos\n", get_time_ms(), id);
+    printf("%ld ms filósofo %d largou os garfos 👐\n", get_time_ms(), id);
 }
 
 void *philosopher(void *arg)
@@ -92,10 +97,11 @@ void *philosopher(void *arg)
     
     while (running)
     {
-        think(id);
         pickup_forks(id);
-        eat(id);
+        handle_eat(id);
         putdown_forks(id);
+        handle_think(id);
+        handle_sleep(id);
     }
     return (NULL);
 }
@@ -109,7 +115,7 @@ void *monitor(void *arg)
         long now = get_time_ms();
         while (i < NUM_PHILOSOPHERS)
         {
-            if (now - last_meal_time[i] > 1000)  // 1000 ms = 1 segundo 
+            if (now - last_meal_time[i] > 8000)  // 1000 ms = 1 segundo 
             {
                 printf("%ld ms filósofo %d morreu de fome 💀\n", now, i);
                 running = 0;
@@ -128,6 +134,7 @@ int main(void)
     pthread_t watcher;
     int *ids;
     long start = get_time_ms();
+    int i;
     
     forks = (pthread_mutex_t *)malloc(NUM_PHILOSOPHERS * sizeof(pthread_mutex_t));
     last_meal_time = (long *)malloc(NUM_PHILOSOPHERS * sizeof(long));
@@ -138,29 +145,42 @@ int main(void)
         fprintf(stderr, "Erro: falha na alocação de memória\n");
         return 1;
     }
-    
+
+    i = 0;    
     // init mutexes e tempos de refeição
-    for (int i = 0; i < NUM_PHILOSOPHERS; i++) {
+    while (i < NUM_PHILOSOPHERS){
         pthread_mutex_init(&forks[i], NULL);
         last_meal_time[i] = start;
         ids[i] = i;
+        ++i;
     }
-    
+
+    i = 0;    
     // crete threads fisolofos
-    for (int i = 0; i < NUM_PHILOSOPHERS; i++) {
+    while (i < NUM_PHILOSOPHERS)
+    {
         pthread_create(&philos[i], NULL, philosopher, &ids[i]);
+        ++i;
     }
     
     // create thread de monitoramento
     pthread_create(&watcher, NULL, monitor, NULL);
-    
-    for (int i = 0; i < NUM_PHILOSOPHERS; i++)
+
+    i = 0;
+    while (i < NUM_PHILOSOPHERS)
+    {
         pthread_join(philos[i], NULL);
+        ++i;
+    }
     pthread_join(watcher, NULL);
-    
+
+    i = 0;    
     // libera a memória alocada e destrói os mutexes
-    for (int i = 0; i < NUM_PHILOSOPHERS; i++)
+    while (i < NUM_PHILOSOPHERS)
+    {
         pthread_mutex_destroy(&forks[i]);
+        ++i;
+    }
 
     pthread_mutex_destroy(&dining_mutex);
     free(forks);
