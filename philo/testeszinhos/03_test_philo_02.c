@@ -4,7 +4,10 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#define NUM_PHILOSOPHERS 5  // Você pode ajustar para qualquer número
+#define NUM_PHILOSOPHERS 2  // Você pode ajustar para qualquer número
+#define SLEEP_PHILO 100000
+#define EAT_PHILO 100000
+#define DIE_PHILO 2000
 
 pthread_mutex_t *forks;     // array dinâmico de mutexes para os garfos
 pthread_mutex_t dining_mutex = PTHREAD_MUTEX_INITIALIZER; // mutex para garantir que apenas um filósofo come por vez
@@ -18,15 +21,12 @@ long get_time_ms()
     return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }
 
-void handle_think(int id)
-{
-    printf("%ld ms fisolofo %d está pensando 🤔\n", get_time_ms(), id);
-    usleep(200000);
-}
+
 void handle_sleep(int id)
 {
     printf("%ld ms fisolofo %d está dormindo 🛌 💤\n", get_time_ms(), id);
-    usleep(200000);
+    usleep(SLEEP_PHILO);
+    printf("%ld ms fisolofo %d está pensando 🤔 \n", get_time_ms(), id);
 }
 
 void handle_eat(int id)
@@ -37,7 +37,7 @@ void handle_eat(int id)
     last_meal_time[id] = get_time_ms();
 
     printf("%ld ms fisolofo %d esta comendo 🍝\n", get_time_ms(), id);
-    usleep(200000);
+    usleep(EAT_PHILO);
     
     pthread_mutex_unlock(&dining_mutex);
 }
@@ -100,7 +100,7 @@ void *philosopher(void *arg)
         pickup_forks(id);
         handle_eat(id);
         putdown_forks(id);
-        handle_think(id);
+       // handle_think(id);
         handle_sleep(id);
     }
     return (NULL);
@@ -115,7 +115,7 @@ void *monitor(void *arg)
         long now = get_time_ms();
         while (i < NUM_PHILOSOPHERS)
         {
-            if (now - last_meal_time[i] > 8000)  // 1000 ms = 1 segundo 
+            if (now - last_meal_time[i] > DIE_PHILO)  // 1000 ms = 1 segundo 
             {
                 printf("%ld ms filósofo %d morreu de fome 💀\n", now, i);
                 running = 0;
