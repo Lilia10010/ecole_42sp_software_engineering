@@ -1,13 +1,17 @@
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/time.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 21:04:19 by lpaula-n          #+#    #+#             */
+/*   Updated: 2025/04/29 21:45:08 by lpaula-n         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define NUM_PHILOSOPHERS 10  // Você pode ajustar para qualquer número
-#define SLEEP_PHILO 400000
-#define EAT_PHILO 400000
-#define DIE_PHILO 8000
+
+#include "../includes/philo.h"
 
 pthread_mutex_t *forks;     // array dinâmico de mutexes para os garfos
 pthread_mutex_t dining_mutex = PTHREAD_MUTEX_INITIALIZER; // mutex para garantir que apenas um filósofo come por vez
