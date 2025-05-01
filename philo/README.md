@@ -1,11 +1,14 @@
-philo/
+philosophers/
+├── includes/
+│ └── philo.h <- Header principal com structs e protótipos
+├── src/
+│ ├── main.c <- main, mallocs, joins
+│ ├── init.c <- inicializações dos structs e variáveis
+│ ├── routine.c <- rotina principal do filósofo
+│ ├── utils.c <- funções utilitárias (get_time_ms, print, etc)
+│ ├── monitor.c <- thread que verifica morte
+│ └── forks.c <- funções de pegar e soltar garfos
 ├── Makefile
-├── main.c
-├── philo.h
-├── init.c
-├── routine.c
-├── time.c
-└── utils.c
 
 gcc deadlock.c -o deadlock -pthread
 valgrind --tool=helgrind ./deadlock
