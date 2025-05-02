@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 21:04:19 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/01 18:22:00 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/01 21:11:22 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../includes/philo.h"
 
 pthread_mutex_t *forks;     // array dinâmico de mutexes para os garfos
-pthread_mutex_t dining_mutex = PTHREAD_MUTEX_INITIALIZER; // mutex para garantir que apenas um filósofo come por vez
 long *last_meal_time;       // array para rastrear a última refeição de cada filósofo
 int running = 1;
 
@@ -33,21 +32,17 @@ long get_time_ms()
 void handle_sleep(int id)
 {
     printf("%ld ms fisolofo %d está dormindo 🛌 💤\n", get_time_ms(), id);
-    usleep(SLEEP_PHILO);
+    usleep(SLEEP_PHILO * 1000);
     printf("%ld ms fisolofo %d está pensando 🤔 \n", get_time_ms(), id);
 }
 
 void handle_eat(int id)
 {
-    // Usar mutex para garantir que apenas um filósofo come por vez
-    pthread_mutex_lock(&dining_mutex);
-    
-    last_meal_time[id] = get_time_ms();
-
     printf("%ld ms fisolofo %d esta comendo 🍝\n", get_time_ms(), id);
-    usleep(EAT_PHILO);
+    last_meal_time[id] = get_time_ms();
+    usleep(EAT_PHILO * 1000);
     
-    pthread_mutex_unlock(&dining_mutex);
+    
 }
 
 // Função para pegar os garfos em uma ordem que evite deadlock
@@ -102,6 +97,11 @@ void putdown_forks(int id)
 void *philosopher(void *arg)
 {
     int id = *(int *)arg;
+
+    if (id % 2 != 0)
+    {
+        usleep(100);
+    }
     
     while (running)
     {
@@ -110,6 +110,7 @@ void *philosopher(void *arg)
         putdown_forks(id);
        // handle_think(id);
         handle_sleep(id);
+        usleep(100);
     }
     return (NULL);
 }
@@ -131,7 +132,7 @@ void *monitor(void *arg)
             }
             ++i;
         }
-        usleep(1000000); // 1s 
+        usleep(1000); // 1s 
     }
     return (NULL);
 }
@@ -190,7 +191,6 @@ int main(void)
         ++i;
     }
 
-    pthread_mutex_destroy(&dining_mutex);
     free(forks);
     free(last_meal_time);
     free(philos);

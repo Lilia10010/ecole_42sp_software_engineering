@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:45:48 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/01 17:54:42 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/01 20:39:53 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#define NUM_PHILOSOPHERS 2
-#define SLEEP_PHILO 2000000	
-#define EAT_PHILO 2000000 	//2s 
-#define DIE_PHILO 4000		//1s
+#define NUM_PHILOSOPHERS 5
+#define SLEEP_PHILO 200	
+#define EAT_PHILO 200
+#define DIE_PHILO 600
 
 
 #endif
