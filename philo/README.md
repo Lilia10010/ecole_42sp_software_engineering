@@ -23,6 +23,7 @@ Em vez de bloquear indefinidamente usar pthread_mutex_trylock
 
 notas
 [ ] se o tempo de comer for maior que o tempo de morrer, no codigo atual ele morre, verificar se realmente é para ele morrer ou se tem que criar alguma lógica para ser impedido de morrer quando este safado começar a comer
+[ ] último parametro timestamp_in_ms X died
 
 5 800 400 400
 2 200 100 100

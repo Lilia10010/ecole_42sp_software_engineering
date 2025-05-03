@@ -28,9 +28,9 @@ MSG_FCLEAN   := $(RED)======= Removendo executável =======$(NC)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo -e  "${NL}${MSG_LINK}${NL}"
+	@echo -e "${NL}${MSG_LINK}${NL}"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo -e  "${NL}${MSG_EXE_DONE}${NL}"
+	@echo -e "${NL}${MSG_EXE_DONE}${NL}"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -39,13 +39,13 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo -e  "${NL}${MSG_OBJ_DONE}${NL}"
 
 clean:
-	@echo -e  "${NL}${MSG_CLEAN}${NL}"
+	@echo -e "${NL}${MSG_CLEAN}${NL}"
 	rm -rf ${OBJ_DIR}
 
 fclean: clean
-	@echo -e  "${NL}${MSG_FCLEAN}${NL}"
+	@echo -e "${NL}${MSG_FCLEAN}${NL}"
 	$(RM) $(NAME)
-	@echo -e "${NL}"
+	@echo -e"${NL}"
 
 re: fclean all
 
