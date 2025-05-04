@@ -1,11 +1,11 @@
 NAME := philo
 
 CC		:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread
+CFLAGS	:= -Wall -Wextra -Werror -pthread -O3
 RM		:= rm -f
 
 SRC_DIR := src
-SRCS	:= $(SRC_DIR)/main.c
+SRCS	:= $(SRC_DIR)/main.c $(SRC_DIR)/utils.c
 OBJ_DIR := obj
 OBJ		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
@@ -28,24 +28,23 @@ MSG_FCLEAN   := $(RED)======= Removendo executável =======$(NC)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo -e "${NL}${MSG_LINK}${NL}"
+	@echo "${NL}${MSG_LINK}${NL}"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo -e "${NL}${MSG_EXE_DONE}${NL}"
+	@echo "${NL}${MSG_EXE_DONE}${NL}"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo -e  "${NL}${MSG_COMP_SRC}${NL}"
+	@echo  "${NL}${MSG_COMP_SRC}${NL}"
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
-	@echo -e  "${NL}${MSG_OBJ_DONE}${NL}"
+	@echo  "${NL}${MSG_OBJ_DONE}${NL}"
 
 clean:
-	@echo -e "${NL}${MSG_CLEAN}${NL}"
+	@echo "${NL}${MSG_CLEAN}${NL}"
 	rm -rf ${OBJ_DIR}
 
 fclean: clean
-	@echo -e "${NL}${MSG_FCLEAN}${NL}"
+	@echo "${NL}${MSG_FCLEAN}${NL}"
 	$(RM) $(NAME)
-	@echo -e"${NL}"
 
 re: fclean all
 
