@@ -6,7 +6,7 @@
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:45:48 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/04 05:02:53 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/06 23:39:59 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#define NUM_PHILOSOPHERS 5
-#define SLEEP_PHILO 200	
-#define EAT_PHILO 200
-#define DIE_PHILO 700
+# define NUM_PHILOSOPHERS 500
+//# define SLEEP_PHILO 200	
+//# define EAT_PHILO 200
+//# define DIE_PHILO 700
+
 
 typedef enum e_state
 {
@@ -42,7 +43,7 @@ typedef struct s_philo
     pthread_t       thread;
     pthread_mutex_t *l_fork;
     pthread_mutex_t *r_fork;
-    pthread_mutex_t last_meal_mutex;
+   // pthread_mutex_t last_meal_mutex;
     long            last_meal;
     t_State         state;
 	struct s_context *ctx;
@@ -59,11 +60,17 @@ typedef struct s_context
     t_Philo			philosophers[NUM_PHILOSOPHERS];
     pthread_mutex_t	forks[NUM_PHILOSOPHERS];
     long			start_time;
-	pthread_mutex_t	total_meals_mutex;
+    pthread_mutex_t dead_lock;
+    pthread_mutex_t print_logs_lock;
+	pthread_mutex_t	total_meals_lock;
 	int				total_meals;
 	//int				limit_meals;
 } t_Context;
 
 suseconds_t ft_atol(const char *n);
+
+extern const char *g_state_messages[];
+
+void print_logs(t_State state, t_Context *ctx, t_Philo *philo);
 
 #endif

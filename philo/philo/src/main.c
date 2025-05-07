@@ -13,29 +13,49 @@
 
 #include "philo.h"
 
+static const char	*g_state_messase[] = {
+	[THINKING]   = "está pensando 🤔",
+    [EATING]     = "está comendo 🍝",
+    [SLEEPING]   = "está dormindo 🛌 💤",
+    [LEFT_FORK]  = "pegou o garfo esquerdo 🍴",
+    [RIGTH_FORK] = "pegou o garfo direito 🍴",
+    [DEAD]       = "morreu 💀"
+};
+
 long get_time_ms(t_Context *ctx)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
 
-    return (((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L)) - ctx->start_time);
+	return (((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L)) - ctx->start_time);
 }
 
-void handle_sleep(t_Context *ctx, int id)
+void print_logs(t_State state, t_Context *ctx, t_Philo *philo)
+{	
+	pthread_mutex_lock(&ctx->print_logs_lock);
+	printf("%ld ms filósofo %d %s\n", get_time_ms(ctx), philo->id, g_state_messase[state]);
+	pthread_mutex_unlock(&ctx->print_logs_lock);
+}
+
+
+void handle_sleep(t_Context *ctx, t_Philo *philo)
 {
-	printf("%ld ms filósofo %d está dormindo 🛌 💤\n", get_time_ms(ctx), id);
+	print_logs(SLEEPING, ctx, philo);
+	//printf("%ld ms filósofo %d está dormindo 🛌 💤\n", get_time_ms(ctx), id);
     usleep(ctx->time_to_sleep * 1000);
-    printf("%ld ms filósofo %d está pensando 🤔 \n", get_time_ms(ctx), id);
-    usleep(50 * 1000);
+	print_logs(THINKING, ctx, philo);
+   // printf("%ld ms filósofo %d está pensando 🤔 \n", get_time_ms(ctx), id);
+    //usleep(50 * 1000);
 }
 
 void handle_eat(t_Context *ctx, t_Philo *philo)
 {
-	pthread_mutex_lock(&ctx->total_meals_mutex);
+	pthread_mutex_lock(&ctx->total_meals_lock);
 	ctx->total_meals++;
-	pthread_mutex_unlock(&ctx->total_meals_mutex);
+	pthread_mutex_unlock(&ctx->total_meals_lock);
 	philo->last_meal = get_time_ms(ctx);
-	printf("%ld ms filósofo %d está comendo 🍝  [%d]\n", get_time_ms(ctx), philo->id, ctx->total_meals);
+	print_logs(EATING, ctx, philo);
+	//printf("%ld ms filósofo %d está comendo 🍝  [%d]\n", get_time_ms(ctx), philo->id, ctx->total_meals);
 	usleep(ctx->time_to_eat * 1000);
 }
 
@@ -47,16 +67,17 @@ void	pickup_forks(t_Context *ctx, t_Philo *philo)
 	if (id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->l_fork);
-		printf("%ld ms filósofo %d pegou o garfo esquerdo 🍴\n", get_time_ms(ctx), id);
+		print_logs(LEFT_FORK, ctx, philo);
 		pthread_mutex_lock(philo->r_fork);
-		printf("%ld ms filósofo %d pegou o garfo direito 🍴\n", get_time_ms(ctx), id);
+		print_logs(RIGTH_FORK, ctx, philo);
 	}
 	else
 	{
 		pthread_mutex_lock(philo->r_fork);
-		printf("%ld ms filósofo %d pegou o garfo direito 🍴\n", get_time_ms(ctx), id);
+		print_logs(RIGTH_FORK, ctx, philo);
 		pthread_mutex_lock(philo->l_fork);
-		printf("%ld ms filósofo %d pegou o garfo esquerdo 🍴\n", get_time_ms(ctx), id);
+		print_logs(LEFT_FORK, ctx, philo);
+		//printf("%ld ms filósofo %d pegou o garfo esquerdo 🍴\n", get_time_ms(ctx), id);
 	}
 }
 
@@ -88,7 +109,7 @@ void *philosopher(void *arg)
 		pickup_forks(ctx, philo);
 		handle_eat(ctx, philo);
 		putdown_forks(ctx, philo);
-		handle_sleep(ctx, philo->id);
+		handle_sleep(ctx, philo);
 	}
 	return (NULL);
 }
@@ -114,7 +135,7 @@ void *ft_monitor(void *arg)
             }
             i++;
         }
-        usleep(5000);
+        usleep(1000);
     }
     return (NULL);
 }
@@ -144,8 +165,10 @@ int main(int argc, char **argv)
     context.start_time = (tv.tv_sec * 1000L) + (tv.tv_usec / 1000L);
 
 	//inicializando as threads
-	pthread_mutex_init(&context.total_meals_mutex, NULL);
+	pthread_mutex_init(&context.total_meals_lock, NULL);
 	context.total_meals = 0;
+	pthread_mutex_init(&context.dead_lock, NULL);
+	pthread_mutex_init(&context.print_logs_lock, NULL);
 	
 	i = 0;
 	while (i < context.num_philosophers)
@@ -166,7 +189,7 @@ int main(int argc, char **argv)
 		pthread_create(&context.philosophers[i].thread, NULL, philosopher ,&context.philosophers[i]);
 		i += 2;
 	}
-	usleep(300);
+	usleep(250);
 	i = 1;
 	while (i < context.num_philosophers)
 	{
