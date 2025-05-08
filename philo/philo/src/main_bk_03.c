@@ -45,13 +45,7 @@ void print_logs(t_State state, t_Context *ctx, t_Philo *philo)
 		return ;
 	pthread_mutex_lock(&ctx->print_logs_lock);
 	if (ctx->running)
-	{
-		if (state != DEAD)
-			printf("%ld %d %s\n", get_time_ms(ctx), philo->id, g_state_messase[state]);
-		else
-			printf("\033[0;31m%ld %d %s\n\033[0m", get_time_ms(ctx), philo->id, g_state_messase[state]);
-
-	}
+		printf("%ld ms filósofo %d %s\n", get_time_ms(ctx), philo->id, g_state_messase[state]);
 	pthread_mutex_unlock(&ctx->print_logs_lock);
 }
 
@@ -61,7 +55,7 @@ void handle_sleep(t_Context *ctx, t_Philo *philo)
 	print_logs(SLEEPING, ctx, philo);
     usleep(ctx->time_to_sleep * 1000);
 	print_logs(THINKING, ctx, philo);
-
+    //usleep(50 * 1000);
 }
 
 void handle_eat(t_Context *ctx, t_Philo *philo)
@@ -95,7 +89,7 @@ void	pickup_forks(t_Context *ctx, t_Philo *philo)
 	}
 }
 
-void	putdown_forks(t_Philo *philo)
+void putdown_forks(t_Philo *philo)
 {
     int	id;
 
@@ -109,7 +103,8 @@ void	putdown_forks(t_Philo *philo)
 	{
 		pthread_mutex_unlock(philo->l_fork);		
 		pthread_mutex_unlock(philo->r_fork);
-	}	
+	}
+	// printf("%ld ms filósofo %d largou os garfos 👐\n", get_time_ms(ctx), id);	
 }
 
 void *philosopher(void *arg)
@@ -127,21 +122,22 @@ void *philosopher(void *arg)
 	return (NULL);
 }
 
-void	*ft_monitor(void *arg)
+void *ft_monitor(void *arg)
 {
-	int	i;
-	t_Context *ctx = (t_Context *)arg;
+    t_Context *ctx = (t_Context *)arg;
+    int i;
 
-	while (ctx->running)
-	{
-		i = 0;
-		long now = get_time_ms(ctx);
-		while (i < ctx->num_philosophers)
+    while (ctx->running)
+    {
+        i = 0;
+        long now = get_time_ms(ctx);
+        while (i < ctx->num_philosophers)
         {
             if (now - ctx->philosophers[i].last_meal > ctx->time_to_die)
             {
-				printf("tempo da última refeição: %ld ms (limite: %ld ms)\n",
+                printf("tempo da última refeição: %ld ms (limite: %ld ms)\n",
                     now - ctx->philosophers[i].last_meal, ctx->time_to_die);
+                //printf("%ld ms filósofo %d morreu de fome 💀\n", now, ctx->philosophers[i].id);
 				print_logs(DEAD, ctx, &ctx->philosophers[i]);
                 ctx->running = 0;
                 return (NULL);
@@ -151,13 +147,6 @@ void	*ft_monitor(void *arg)
         usleep(1000);
     }
     return (NULL);
-}
-
-void	handle_one_philosopher(t_Context *ctx)
-{
-	printf("0 1 %s\n", g_state_messase[LEFT_FORK]);
-	usleep(ctx->time_to_sleep * 1000);
-	printf("\033[0;31m%ld 1  %s\033[0m\n", get_time_ms(ctx), g_state_messase[DEAD]);
 }
 
 int main(int argc, char **argv)
@@ -178,18 +167,11 @@ int main(int argc, char **argv)
 	context.time_to_sleep = ft_atol(argv[4]);
 	context.running = 1;
 
-	struct timeval tv;
-	gettimeofday(&tv, NULL);
-	context.start_time = (tv.tv_sec * 1000L) + (tv.tv_usec / 1000L);
-
-	if (context.num_philosophers == 1)
-	{
-		handle_one_philosopher(&context);
-		return (0);
-	}
-
 	// ===> tratar argumentos inválidos
 
+	struct timeval tv;
+    gettimeofday(&tv, NULL);
+    context.start_time = (tv.tv_sec * 1000L) + (tv.tv_usec / 1000L);
 
 	//inicializando as threads
 	pthread_mutex_init(&context.total_meals_lock, NULL);
@@ -201,7 +183,7 @@ int main(int argc, char **argv)
 	while (i < context.num_philosophers)
 	{
 		pthread_mutex_init(&context.forks[i], NULL);
-		context.philosophers[i].id = i + 1;
+		context.philosophers[i].id = i;
 		context.philosophers[i].l_fork = &context.forks[i];
 		context.philosophers[i].r_fork = &context.forks[(i + 1) % context.num_philosophers];
 		context.philosophers[i].ctx = &context;
@@ -233,6 +215,6 @@ int main(int argc, char **argv)
 		++i;
 	}
 
-	//printf("Simulação finalizada!\n");
+	printf("Simulação finalizada\n");
 	return (0);
 }

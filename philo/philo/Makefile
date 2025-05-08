@@ -1,7 +1,7 @@
 NAME := philo
 
 CC		:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread -O3
+CFLAGS	:= -Wall -Wextra -Werror -pthread
 RM		:= rm -f
 
 SRC_DIR := src
@@ -26,6 +26,10 @@ MSG_CLEAN    := $(RED)======= Removendo arquivos objeto =======$(NC)
 MSG_FCLEAN   := $(RED)======= Removendo executável =======$(NC)
 
 all: $(NAME)
+	@echo "Horário do sistema:"
+	@date
+	@echo "Horário do sistema de arquivos (modificação do arquivo main.c):"
+	@stat $(SRC_DIR)/main.c | grep Modify
 
 $(NAME): $(OBJ)
 	@echo "${NL}${MSG_LINK}${NL}"
