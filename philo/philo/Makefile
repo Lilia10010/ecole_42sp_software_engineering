@@ -5,7 +5,7 @@ CFLAGS	:= -Wall -Wextra -Werror -pthread
 RM		:= rm -f
 
 SRC_DIR := src
-SRCS	:= $(SRC_DIR)/main.c $(SRC_DIR)/utils.c
+SRCS	:= $(SRC_DIR)/main.c $(SRC_DIR)/utils.c  $(SRC_DIR)/forks.c $(SRC_DIR)/init.c $(SRC_DIR)/monitor.c $(SRC_DIR)/routine.c $(SRC_DIR)/philosopher.c
 OBJ_DIR := obj
 OBJ		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
