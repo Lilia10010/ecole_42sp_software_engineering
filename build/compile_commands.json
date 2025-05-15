@@ -1,0 +1,112 @@
+[
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_cursor.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_cursor.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_cursor.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_exit.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_exit.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_exit.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_images.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_images.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_images.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_init.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_init.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_init.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_keys.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_keys.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_keys.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_loop.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_loop.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_loop.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_monitor.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_monitor.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_monitor.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_mouse.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_mouse.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_mouse.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_put_pixel.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_put_pixel.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_put_pixel.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/mlx_window.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_window.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/mlx_window.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/utils/mlx_error.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_error.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_error.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/utils/mlx_list.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_list.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_list.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_utils.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_utils.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/utils/mlx_compare.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_compare.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/utils/mlx_compare.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/font/mlx_font.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/font/mlx_font.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/font/mlx_font.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/textures/mlx_png.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_png.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_png.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/textures/mlx_texture.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_texture.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_texture.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/src/textures/mlx_xpm42.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_xpm42.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/src/textures/mlx_xpm42.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/lib/png/lodepng.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/lib/png/lodepng.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/lib/png/lodepng.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/lib/glad/glad.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/lib/glad/glad.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/lib/glad/glad.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/mlx_vert_shader.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build/mlx_vert_shader.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build/mlx_vert_shader.c"
+},
+{
+  "directory": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build",
+  "command": "/usr/bin/gcc-11 -I/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/so_long/lib/MLX42/include -g -fPIC   -D LODEPNG_NO_COMPILE_ENCODER -D LODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -D NDEBUG -Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare -Wno-unused-parameter -Wno-missing-field-initializers -O3 -std=c11 -o CMakeFiles/mlx42.dir/mlx_frag_shader.c.o -c /nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build/mlx_frag_shader.c",
+  "file": "/nfs/homes/lpaula-n/lp/my_github/ecole_42sp_software_engineering/build/mlx_frag_shader.c"
+}
+]
