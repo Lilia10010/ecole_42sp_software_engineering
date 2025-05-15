@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   forks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: peda-cos <peda-cos@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/11 17:59:44 by microbiana        #+#    #+#             */
+/*   Updated: 2025/05/14 23:47:21 by peda-cos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philo.h"
+
+void	pickup_forks(t_Context *ctx, t_Philo *philo)
+{
+	int	id;
+	int	is_running;
+
+	id = philo->id;
+	pthread_mutex_lock(&ctx->running_lock);
+	is_running = ctx->running;
+	pthread_mutex_unlock(&ctx->running_lock);
+	if (!is_running)
+		return ;
+	if (id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->l_fork);
+		print_logs(LEFT_FORK, ctx, philo);
+		pthread_mutex_lock(philo->r_fork);
+		print_logs(RIGTH_FORK, ctx, philo);
+	}
+	else
+	{
+		pthread_mutex_lock(philo->r_fork);
+		print_logs(RIGTH_FORK, ctx, philo);
+		pthread_mutex_lock(philo->l_fork);
+		print_logs(LEFT_FORK, ctx, philo);
+	}
+}
+
+void	putdown_forks(t_Philo *philo)
+{
+	int	id;
+
+	id = philo->id;
+	if (id % 2 == 0)
+	{
+		pthread_mutex_unlock(philo->r_fork);
+		pthread_mutex_unlock(philo->l_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->l_fork);
+		pthread_mutex_unlock(philo->r_fork);
+	}
+}
