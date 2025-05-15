@@ -11,25 +11,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-// const char	*g_state_messase[] = {
-// 	[THINKING]   = "está pensando 🤔",
-//     [EATING]     = "está comendo 🍝",
-//     [SLEEPING]   = "está dormindo 🛌 💤",
-//     [LEFT_FORK]  = "pegou o garfo esquerdo 🍴",
-//     [RIGTH_FORK] = "pegou o garfo direito 🍴",
-//     [DEAD]       = "morreu TT 💀"
-// };
+#include "../includes/philo.h"
 
 const char	*g_state_messase[] = {
-	[THINKING]   = "is thinking",
-    [EATING]     = "is eating",
-    [SLEEPING]   = "is sleeping",
-    [LEFT_FORK]  = "has taken a fork",
-    [RIGTH_FORK] = "has taken a fork",
-    [DEAD]       = "died"
+	[THINKING]   = "está pensando 🤔",
+    [EATING]     = "está comendo 🍝",
+    [SLEEPING]   = "está dormindo 🛌 💤",
+    [LEFT_FORK]  = "pegou o garfo esquerdo 🍴",
+    [RIGTH_FORK] = "pegou o garfo direito 🍴",
+    [DEAD]       = "morreu TT 💀"
 };
+
+suseconds_t	ft_atol(const char *n)
+{
+	char		sign;
+	suseconds_t	result;
+
+	sign = 1;
+	result = 0;
+	while (*n == 32 || (*n >= 9 && *n <= 13))
+		++n;
+	if (*n == '+' || *n == '-')
+	{
+		if (*n == '-')
+			sign = -1;
+		++n;
+	}
+	while (*n >= '0' && *n <= '9')
+	{
+		result = result * 10 + (*n - '0');
+		++n;
+	}
+	return (result * sign);
+}
+
+
+// const char	*g_state_messase[] = {
+// 	[THINKING]   = "is thinking",
+//     [EATING]     = "is eating",
+//     [SLEEPING]   = "is sleeping",
+//     [LEFT_FORK]  = "has taken a fork",
+//     [RIGTH_FORK] = "has taken a fork",
+//     [DEAD]       = "died"
+// };
 
 long get_time_ms(t_Context *ctx)
 {

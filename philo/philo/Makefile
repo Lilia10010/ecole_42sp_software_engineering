@@ -1,7 +1,7 @@
 NAME := philo
 
 CC		:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -pthread
+CFLAGS	:= -Wall -Wextra -Werror -pthread -fsanitize=thread -g
 RM		:= rm -f
 
 SRC_DIR := src
@@ -28,19 +28,19 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo -e "$(NL)$(GREEN)Build completed successfully: $(NAME)$(RESET)"
+	@echo "$(NL)$(GREEN)Build completed successfully: $(NAME)$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS)  -c $< $(HEADER) -o $@
-	@echo -e  "$(YELLOW)Compiling source file:$(RESET) $(notdir $<)"
+	@echo  "$(YELLOW)Compiling source file:$(RESET) $(notdir $<)"
 
 clean:
-	@echo -e "$(NL)$(RED)Removing object files:$(RESET) $(OBJ)"
+	@echo "$(NL)$(RED)Removing object files:$(RESET) $(OBJ)"
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo -e "$(RED)Removing executable:$(RESET) $(NAME)"
+	@echo "$(RED)Removing executable:$(RESET) $(NAME)"
 	@$(RM) $(NAME)
 
 re: fclean all

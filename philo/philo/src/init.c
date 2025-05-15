@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:42:06 by microbiana        #+#    #+#             */
-/*   Updated: 2025/05/11 18:29:10 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/14 22:49:33 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void init_simulation(t_Context *context)
     context->total_meals = 0;
     pthread_mutex_init(&context->dead_lock, NULL);
     pthread_mutex_init(&context->print_logs_lock, NULL);
+    pthread_mutex_init(&context->running_lock, NULL);
+    pthread_mutex_init(&context->last_meal_lock, NULL);
 
     while (i < context->num_philosophers)
     {
