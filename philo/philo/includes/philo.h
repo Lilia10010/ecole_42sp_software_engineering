@@ -6,7 +6,7 @@
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:45:48 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/12 00:16:14 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:42:18 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_context
 	pthread_mutex_t	print_logs_lock;
 	pthread_mutex_t	total_meals_lock;
 	pthread_mutex_t	running_lock;
-	pthread_mutex_t last_meal_lock;
+	pthread_mutex_t	last_meal_lock;
 	int				total_meals;
 }	t_Context;
 

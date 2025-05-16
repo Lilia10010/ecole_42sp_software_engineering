@@ -27,10 +27,10 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	init_simulation(&context);
-	pthread_create(&monitor, NULL, ft_monitor, &context);
 	create_philo_threads(&context);
+	pthread_create(&monitor, NULL, ft_monitor, &context);
 	pthread_join(monitor, NULL);
-
+	
 	i = 0;
 	while (i < context.num_philosophers)
 	{

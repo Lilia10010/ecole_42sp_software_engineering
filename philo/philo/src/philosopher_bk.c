@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   philosopher_bk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:22:45 by microbiana        #+#    #+#             */
-/*   Updated: 2025/05/15 21:56:23 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/15 23:44:33 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,57 @@ static void	*philosopher(void *arg)
 {
 	t_Philo		*philo;
 	t_Context	*ctx;
+	int 		is_running;
 
 	philo = (t_Philo *)arg;
 	ctx = philo->ctx;
-	while (is_simulation_running(ctx))
+	// while (1)
+	// {
+	// 	pthread_mutex_lock(&ctx->running_lock);
+	// 	is_running = ctx->running;
+	// 	pthread_mutex_unlock(&ctx->running_lock);
+	// 	if (!is_running)
+	// 		break ;
+	// 	pickup_forks(ctx, philo);
+	// 	pthread_mutex_lock(&ctx->running_lock);
+	// 	is_running = ctx->running;
+	// 	pthread_mutex_unlock(&ctx->running_lock);
+	// 	if (!is_running)
+	// 	{
+	// 		putdown_forks(philo);
+	// 		break ;
+	// 	}
+	// 	handle_eat(ctx, philo);
+	// 	putdown_forks(philo);
+	// 	pthread_mutex_lock(&ctx->running_lock);
+	// 	is_running = ctx->running;
+	// 	pthread_mutex_unlock(&ctx->running_lock);
+	// 	if (!is_running)
+	// 		break ;
+	// 	handle_sleep(ctx, philo);
+	// }
+	while (1)
+{
+	if (!is_simulation_running(ctx))
+		break;
+
+	pickup_forks(ctx, philo);
+
+	if (!is_simulation_running(ctx))
 	{
-		pickup_forks(ctx, philo);
-		if (!is_simulation_running(ctx))
-		{
-			putdown_forks(philo);
-			break ;
-		}
-		handle_eat(ctx, philo);
 		putdown_forks(philo);
-		if (!is_simulation_running(ctx))
-			break ;
-		handle_sleep(ctx, philo);
+		break;
 	}
+
+	handle_eat(ctx, philo);
+	putdown_forks(philo);
+
+	if (!is_simulation_running(ctx))
+		break;
+
+	handle_sleep(ctx, philo);
+}
+
 	return (NULL);
 }
 

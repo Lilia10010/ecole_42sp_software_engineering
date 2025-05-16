@@ -21,9 +21,9 @@ NL		:= \n
 
 
 all: $(NAME)
-#	@echo -e "Horário do sistema:"
+#	@echo "Horário do sistema:"
 #	@date
-#	@echo -e "Horário do sistema de arquivos (modificação do arquivo main.c):"
+#	@echo "Horário do sistema de arquivos (modificação do arquivo main.c):"
 #	@stat $(SRC_DIR)/main.c | grep Modify
 
 $(NAME): $(OBJ)

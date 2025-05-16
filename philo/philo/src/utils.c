@@ -6,7 +6,7 @@
 /*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:06:42 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/14 21:40:39 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/15 23:28:33 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void	destroy_mutexes(t_Context *ctx)
 {
 	int	i;
 
+	pthread_mutex_lock(&ctx->running_lock);
+	ctx->running = 0;
+	pthread_mutex_unlock(&ctx->running_lock);
+	usleep(1000);
 	i = 0;
 	while (i < ctx->num_philosophers)
 	{
@@ -73,7 +77,6 @@ void	destroy_mutexes(t_Context *ctx)
 	pthread_mutex_destroy(&ctx->total_meals_lock);
 	pthread_mutex_destroy(&ctx->dead_lock);
 	pthread_mutex_destroy(&ctx->print_logs_lock);
-
 	pthread_mutex_destroy(&ctx->running_lock);
     pthread_mutex_destroy(&ctx->last_meal_lock);
 }
@@ -86,23 +89,6 @@ long	get_time_ms(t_Context *ctx)
 	return (((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L)) - ctx->start_time);
 }
 
-// void	print_logs(t_State state, t_Context *ctx, t_Philo *philo)
-// {
-// 	pthread_mutex_lock(&ctx->print_logs_lock);
-// 	if (!ctx->running)
-// 		return ;
-// 	if (ctx->running)
-// 	{
-// 		if (state != DEAD)
-// 			printf("%ld %d %s\n", get_time_ms(ctx), philo->id,
-// 				get_state_message(state));
-// 		else
-// 			printf("\033[0;31m%ld %d %s\n\033[0m",
-// 				get_time_ms(ctx), philo->id, get_state_message(state));
-// 	}
-// 	pthread_mutex_unlock(&ctx->print_logs_lock);
-// }
-
 void	print_logs(t_State state, t_Context *ctx, t_Philo *philo)
 {
 	pthread_mutex_lock(&ctx->running_lock);
@@ -113,7 +99,6 @@ void	print_logs(t_State state, t_Context *ctx, t_Philo *philo)
 	}
 	pthread_mutex_unlock(&ctx->running_lock);
 	pthread_mutex_lock(&ctx->print_logs_lock);
-	//pthread_mutex_lock(&ctx->running_lock);
 	if (ctx->running)
 	{
 		if (state != DEAD)
@@ -123,6 +108,5 @@ void	print_logs(t_State state, t_Context *ctx, t_Philo *philo)
 			printf("\033[0;31m%ld %d %s\n\033[0m",
 				get_time_ms(ctx), philo->id, get_state_message(state));
 	}
-	//pthread_mutex_unlock(&ctx->running_lock);
 	pthread_mutex_unlock(&ctx->print_logs_lock);
 }

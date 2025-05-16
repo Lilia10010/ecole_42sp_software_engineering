@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:59:44 by microbiana        #+#    #+#             */
-/*   Updated: 2025/05/11 18:00:15 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/15 23:21:27 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 void pickup_forks(t_Context *ctx, t_Philo *philo)
 {
     int id;
+    int is_running;
 
     id = philo->id;
+    pthread_mutex_lock(&ctx->running_lock);
+    is_running = ctx->running;
+    pthread_mutex_unlock(&ctx->running_lock);
+    if (!is_running)
+        return ;
     if (id % 2 == 0)
     {
         pthread_mutex_lock(philo->l_fork);
