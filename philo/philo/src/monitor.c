@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:57:58 by microbiana        #+#    #+#             */
-/*   Updated: 2025/05/15 23:52:25 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/18 17:27:39 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int check_all_meals(t_Context *ctx)
+{
+	int	i;
+	int	all_ate_enough;
+
+	if (ctx->must_eat_count <= 0)
+		return (0);
+
+	all_ate_enough = 1;
+	i = 0;
+
+	while (i < ctx->num_philosophers)
+	{
+		pthread_mutex_lock(&ctx->total_meals_lock);
+		if (ctx->philosophers[i].meals_eaten < ctx->must_eat_count)
+			all_ate_enough = 0;
+		pthread_mutex_unlock(&ctx->total_meals_lock);
+		i++;
+	}
+	if (all_ate_enough)
+	{
+		pthread_mutex_lock(&ctx->running_lock);
+		ctx->running = 0;
+		pthread_mutex_unlock(&ctx->running_lock);
+		return (1);
+	}
+	return (0);
+}
 
 void	*ft_monitor(void *arg)
 {
@@ -44,6 +73,8 @@ void	*ft_monitor(void *arg)
 			pthread_mutex_unlock(&ctx->last_meal_lock);
 			i++;
 		}
+		if (check_all_meals(ctx))
+			break ;
 		usleep(1000);
 	}
 	return (NULL);

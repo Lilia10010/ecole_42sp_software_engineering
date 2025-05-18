@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:45:48 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/15 21:42:18 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2025/05/18 17:27:53 by microbiana       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # define NUM_PHILOSOPHERS 500
 
@@ -37,7 +38,9 @@ typedef struct s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		*r_fork;
+	pthread_mutex_t		meal_lock;
 	long				last_meal;
+	int					meals_eaten;
 	t_State				state;
 	struct s_context	*ctx;
 }	t_Philo;
@@ -49,6 +52,7 @@ typedef struct s_context
 	long			time_to_die;
 	long			time_to_eat;
 	long			time_to_sleep;
+	int				must_eat_count;
 	t_Philo			philosophers[NUM_PHILOSOPHERS];
 	pthread_mutex_t	forks[NUM_PHILOSOPHERS];
 	long			start_time;
@@ -57,10 +61,10 @@ typedef struct s_context
 	pthread_mutex_t	total_meals_lock;
 	pthread_mutex_t	running_lock;
 	pthread_mutex_t	last_meal_lock;
-	int				total_meals;
+	//int				total_meals;
 }	t_Context;
 
-suseconds_t	ft_atol(const char *n);
+suseconds_t ft_atol(const char *str, char **end_ptr);
 int			init_args(t_Context *ctx, int argc, char **argv);
 long		get_time_ms(t_Context *ctx);
 void		init_simulation(t_Context *context);
