@@ -1,0 +1,6 @@
+[submodule "philo/philo/42_philosophers"]
+	path = philo/philo/42_philosophers
+	url = https://github.com/Lilia10010/42_philosophers.git
+[submodule "42_philosophers"]
+	path = 42_philosophers
+	url = https://github.com/Lilia10010/42_philosophers.git
