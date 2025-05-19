@@ -34,7 +34,7 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### [Philosophers](/philosophers)
+### [Philosophers](https://github.com/Lilia10010/42_philosophers)
 
 <img src="assets/badges/philosopherse.png" alt="philosophers" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
