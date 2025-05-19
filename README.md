@@ -28,10 +28,22 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### Next => tô vendo 🦇
+### Next => ... 🦇
 
 ⚠️ Work in Progress ⚠️
 
+---
+
+### [Philosophers](/philosophers)
+
+<img src="assets/badges/philosopherse.png" alt="philosophers" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: O projeto Philosophers é um exercício de programação voltado ao estudo e à aplicação prática de conceitos de **concorrência e sincronização em sistemas operacionais**. Inspirado no clássico problema dos "Filósofos Jantando", o projeto busca implementar uma solução eficiente e segura para gerenciar o acesso concorrente a recursos limitados (garfos) por múltiplas **threads (filósofos)**, evitando **condições de corrida (race conditions)**, **deadlocks e fomes (starvation)**, e garantindo a integridade do sistema durante a execução simultânea das threads.
+> -   **Habilidades**: `Programação concorrente e paralela` `Prevenção de deadlocks e starvation` `evitar deadlocks` `Sincronização com mutexes e controle de acesso a recursos críticos` `Criação e gerenciamento de threads` `Uso de estruturas de monitoramento para detectar estados críticos` `Manipulação precisa de tempo com gettimeofday, usleep e controle de tempo absoluto`
+>
+> &nbsp; &nbsp; &nbsp;
 
 ---
 
