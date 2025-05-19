@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:02:14 by microbiana        #+#    #+#             */
-/*   Updated: 2025/05/18 17:03:27 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/18 21:34:40 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	handle_sleep(t_Context *ctx, t_Philo *philo)
 {
-	int is_running;
+	int	is_running;
+
 	print_logs(SLEEPING, ctx, philo);
 	usleep(ctx->time_to_sleep * 1000);
 	pthread_mutex_lock(&ctx->running_lock);
@@ -29,14 +30,19 @@ void	handle_sleep(t_Context *ctx, t_Philo *philo)
 
 void	handle_eat(t_Context *ctx, t_Philo *philo)
 {
+	int	is_running;
+
+	pthread_mutex_lock(&ctx->running_lock);
+	is_running = ctx->running;
+	pthread_mutex_unlock(&ctx->running_lock);
+	if (!is_running)
+		return ;
 	pthread_mutex_lock(&ctx->last_meal_lock);
 	philo->last_meal = get_time_ms(ctx);
 	pthread_mutex_unlock(&ctx->last_meal_lock);
 	print_logs(EATING, ctx, philo);
 	usleep(ctx->time_to_eat * 1000);
-
-	pthread_mutex_lock(&philo->meal_lock);
+	pthread_mutex_lock(&philo->meals_eaten_lock);
 	philo->meals_eaten++;
-	pthread_mutex_unlock(&philo->meal_lock);
-
+	pthread_mutex_unlock(&philo->meals_eaten_lock);
 }

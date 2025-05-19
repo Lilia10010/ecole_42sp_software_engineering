@@ -27,3 +27,11 @@ vendor/
 .vscode/
 .vs/
 .idea/
+
+# Build directories
+build/
+dist/
+# Temporary files
+tmp/
+# Log files
+*.log

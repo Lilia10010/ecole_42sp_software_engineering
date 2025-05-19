@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: microbiana <microbiana@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lpaula-n <lpaula-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:45:48 by lpaula-n          #+#    #+#             */
-/*   Updated: 2025/05/18 17:27:53 by microbiana       ###   ########.fr       */
+/*   Updated: 2025/05/18 21:34:52 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/time.h>
 # include <limits.h>
 
-# define NUM_PHILOSOPHERS 500
+# define NUM_PHILOSOPHERS 200
 
 typedef enum e_state
 {
@@ -38,7 +38,7 @@ typedef struct s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		*r_fork;
-	pthread_mutex_t		meal_lock;
+	pthread_mutex_t		meals_eaten_lock;
 	long				last_meal;
 	int					meals_eaten;
 	t_State				state;
@@ -61,10 +61,9 @@ typedef struct s_context
 	pthread_mutex_t	total_meals_lock;
 	pthread_mutex_t	running_lock;
 	pthread_mutex_t	last_meal_lock;
-	//int				total_meals;
 }	t_Context;
 
-suseconds_t ft_atol(const char *str, char **end_ptr);
+suseconds_t	ft_atol(const char *str, char **end_ptr);
 int			init_args(t_Context *ctx, int argc, char **argv);
 long		get_time_ms(t_Context *ctx);
 void		init_simulation(t_Context *context);
