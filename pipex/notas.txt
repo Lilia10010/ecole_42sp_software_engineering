@@ -1,0 +1,89 @@
+./pipex infile "ls -l" "wc -l" outfile
+➜ pipex_test git:(feature/pipex) ✗ < infile ls -l | wc -l > outfile
+bão => https://reactive.so/post/42-a-comprehensive-guide-to-pipex/
+
+testes:
+Descrição: filtra 1 e retorna qntidade de linhas
+./pipex infile cat "grep 1" "sort" "wc -l"  outfile
+
+Descrição: gera uma lista de 10000 números aleatórios entre 1-999:
+ shuf -i 1-999 -n 10000 > infile
+
+Descrição: Lê o conteúdo de infile, passa pelo comando cat, conta as linhas com wc -l, e salva em outfile.
+pipex => ./pipex infile "cat" "wc -l" outfile
+shell => < infile cat | wc -l > outfile
+
+Descrição: Lê infile, filtra linhas contendo "test" (grep), ordena as linhas (sort), e salva em outfile.
+./pipex infile "grep test" "sort" outfile
+
+test de erro:
+comando inválido: ./pipex infile "invalidcommand" "wc -l" outfile
+arquivo inexistente: ./pipex nonexistentfile "cat" "wc -l" outfile
+
+Permissão negada no arquivo de entrada:
+chmod 000 infile
+./pipex infile "cat" "wc -l" outfile
+
+Permissão negada no arquivo de saída:
+touch outfile && chmod 000 outfile
+./pipex infile "ls -l" "wc -l" outfile
+
+
+Descrição: Gera um arquivo com 1 milhão de linhas e processa com o programa (deve contar o número de linhas)
+yes "test line" | head -n 1000000 > infile
+
+--------------------------------------------- \\ ---- // --
+
+não esta funcionando:
+Comando com redirecionamento interno
+Descrição: Lê o infile, exibe apenas a primeira coluna de cada linha com awk.
+pipex => ./pipex infile "cat" "awk '{print $1}'" outfile
+shell => < infile cat | awk '{print $1}' > outfile
+
+Descrição: Especifica o caminho absoluto de um binário no comando (deveria listar o conteúdo do diretório)
+./pipex infile "/bin/ls -l" "wc -l" outfile
+
+Descrição: Lista arquivos do infile, filtra arquivos .c, conta o número de linhas, e salva no outfile.
+ ./pipex infile "ls -l" "grep .c"  "wc -l" outfile 
+ < infile ls -l | grep .c | wc -l > outfile
+
+
+------------------------------------------------ >> ------------- << ------------
+
+teste com mais de tres comandos (se comseguir ganha um campari :] )
+./pipex infile "ls -l" "grep .c" "wc -l" outfile
+
+
+----------------------
+[x] funcionar com o caminho absoluto => ./pipex infile /bin/cat "grep pipe" outfile
+[x] criar o outfile independente dos comandos funcionar
+[ ] com o arquivo infile sem permissão de leitura - (chmod -r infile [./pipex infile cat "grep pipe" outfile] )
+
+char *path = "/usr/bin/ls"; 
+O caminho absoluto para o comando `grep` geralmente é `/bin/grep` e para o comando `wc -l` é `/usr/bin/wc`. Você pode verificar isso usando os comandos `which grep` e `which wc` no terminal:
+
+chmod -r infile
+Os resultados típicos são:
+- `/bin/grep`
+- `/usr/bin/wc`
+
+-------------
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck --trace-children=yes ./pipex infile "cat" "wc -l" outfile
+
+
+./pipex "infiles/basic.txt" "cat -e" "grep nonexistingword" "outfiles/nonexistingfile" 
+< infiles cat -e | grep nonexistingword > outfile
+
+echo $?
+baixar o o 42_pipex_tester colocar na raiz rodar o bash run.sh
+
+./pipex "nonexistingfile" "cat -e" "ls" "outfiles/outfile" 
+< nonexistingfile cat -e | ls > outfiles/outfile_tester
+
+
+----
+duvidas significado de 0777, 0666, 0644
+acessando um index 0, 1, 2
+acessando normal 1, 2, 3
+como se fala quando precisamos acessar por index ou normal?
