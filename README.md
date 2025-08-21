@@ -28,9 +28,22 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
-### Next => ... 🦇
+### Next => ... 🦇 ⚠️ Work in Progress ⚠️
 
-⚠️ Work in Progress ⚠️
+---
+
+### [Minishell](https://github.com/Lilia10010/42_minishell)
+
+<img src="assets/badges/minishelle.png" alt="minishell" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: Criar um interpretador de linha de comando funcional similar ao bash, com capacidades de executar comandos, gerenciar processos, manipular variáveis de ambiente e oferecer funcionalidades avançadas como redirecionamento, pipes e controle de sinais..
+> -   **Habilidades**: `Parsing e análise léxica/sintática` `Gerenciamento de processos (fork, exec, wait)` `Pipes e redirecionamento de I/O` `Manipulação de variáveis de ambiente` `Tratamento de sinais (SIGINT, SIGQUIT)` `Implementação de built-ins (echo, cd, pwd, export, unset, env, exit)` `Expansão de variáveis` `Gerenciamento de memória dinâmica` `Controle de fluxo e estruturas condicionais` `Readline para interface interativa`
+>
+> &nbsp; &nbsp; &nbsp;
+
+---
 
 ---
 
@@ -68,6 +81,19 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 >
 > -   **Objetivo**: O objetivo deste projeto é criar um programa que ordena uma pilha de números inteiros, utilizando duas pilhas auxiliares e um conjunto limitado de operações. O desafio é encontrar a sequência de operações mais eficiente para ordenar a pilha, minimizando o número de movimentos necessários.
 > -   **Habilidades**: `Algoritmos` `estruturas de dados` `pilhas` `ordenamento`
+>
+> &nbsp; &nbsp; &nbsp;
+
+---
+
+### [Minishell](https://github.com/Lilia10010/42_minishell)
+
+<img src="assets/badges/minishelle.png" alt="minishell" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: Criar um interpretador de linha de comando (shell) funcional, similar ao bash. O projeto visa implementar um shell que seja capaz de executar comandos, gerenciar processos, manipular variáveis de ambiente, e oferecer funcionalidades avançadas como redirecionamento de entrada/saída, pipes, expansão de variáveis, e controle de sinais. O Minishell deve interpretar e executar comandos de forma interativa, fornecendo uma interface robusta entre o usuário e o sistema operacional.
+> -   **Habilidades**: `Parsing e análise léxica/sintática` `Gerenciamento de processos (fork, exec, wait)` `Pipes e redirecionamento de I/O` `Manipulação de variáveis de ambiente` `Tratamento de sinais (SIGINT, SIGQUIT)` `Implementação de built-ins (echo, cd, pwd, export, unset, env, exit)` `Expansão de variáveis e wildcards` `Gerenciamento de memória dinâmica` `Controle de fluxo e estruturas condicionais` `Readline para interface interativa`
 >
 > &nbsp; &nbsp; &nbsp;
 
@@ -124,10 +150,10 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 > &nbsp; &nbsp; &nbsp;
 
 ---
+
 <div style="flex">
 
-
-  ### [Libft](/libft)
+### [Libft](/libft)
 
   <img src="assets/badges/libfte.png" alt="libft" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
 
@@ -135,17 +161,14 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
   <div>
 
-  > &nbsp; &nbsp; &nbsp;
-  >
-  > -   **Objetivo**: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
-  > -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
-  >
-  > &nbsp; &nbsp; &nbsp;
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: O projeto Libft consiste em criar uma biblioteca de funções essenciais em C, que inclui funções de manipulação de strings, memória, listas encadeadas, e outros utilitários que são comumente usados em projetos subsequentes na 42.
+> -   **Habilidades**: `Programação em C` `manipulação de memória` `listas e estruturas de dados básicas`
+>
+> &nbsp; &nbsp; &nbsp;
+
   </div>
-
-
-
-
 
 <div style="padding-bottom: 10px;padding-top: 24px;font-weight: 600;">
   <p align="center" style="border: none;color: #ff5ccd;">
@@ -154,6 +177,3 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
   <img src="assets/graph-cursus.png" alt="gráfico do curso"/>
 </div>
-
-
-
