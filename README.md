@@ -32,6 +32,19 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 
 ---
 
+### [NetPractice](/net_practice)
+
+<img src="assets/badges/netpracticee.png" alt="netpractice" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
+
+> &nbsp; &nbsp; &nbsp;
+>
+> -   **Objetivo**: O NetPractice é um projeto voltado para o aprendizado prático de redes de computadores. O desafio consiste em configurar e solucionar cenários de redes, trabalhando com endereçamento IP, roteamento, sub-redes, máscaras, NAT, e regras de firewall. O aluno deve entender como os dispositivos se comunicam.
+> -   **Habilidades**: `Endereçamento IP` `subnetting` `roteamento estático` `configuração de dispositivos de rede`
+>
+> &nbsp; &nbsp; &nbsp;
+
+---
+
 ### [Minishell](https://github.com/Lilia10010/42_minishell)
 
 <img src="assets/badges/minishelle.png" alt="minishell" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
@@ -133,19 +146,6 @@ A <strong>Ecole 42</strong> é uma renomada escola de programação e inovação
 >
 > -   **Objetivo**: Este projeto visa recriar a função `printf` da biblioteca padrão C, implementando a formatação de strings de maneira personalizada. O desafio é trabalhar com diferentes tipos de dados e criar uma implementação eficiente e segura.
 > -   **Habilidades**: `Manipulação de strings` `variáveis de argumento` `controle de saída`
->
-> &nbsp; &nbsp; &nbsp;
-
----
-
-### [Get_next_line](/get_next_line)
-
-<img src="assets/badges/get_next_linee.png" alt="get next line" style="width: 100px; vertical-align: middle;padding-bottom: 8px;" />
-
-> &nbsp; &nbsp; &nbsp;
->
-> -   **Objetivo**: O objetivo desse projeto é criar uma função que leia uma linha de um arquivo ou de um fluxo de entrada (stdin) sem carregar o arquivo inteiro na memória. A função deve ser capaz de lidar com múltiplas chamadas e ler até o final do arquivo ou até encontrar uma linha completa.
-> -   **Habilidades**: `Manipulação de arquivo` `buffers e leitura eficiente de dados`
 >
 > &nbsp; &nbsp; &nbsp;
 
